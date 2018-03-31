@@ -15,6 +15,7 @@
 		90707C602047B3C30009E4A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90707C5E2047B3C30009E4A7 /* LaunchScreen.storyboard */; };
 		90BB2F8C20701AB800CD3239 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F8B20701AB800CD3239 /* ScheduleViewController.swift */; };
 		90BB2F8E20701C0700CD3239 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */; };
+		90BB2F922070257300CD3239 /* RecipeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F912070257300CD3239 /* RecipeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		90707C612047B3C30009E4A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90BB2F8B20701AB800CD3239 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		90BB2F912070257300CD3239 /* RecipeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				90707C5C2047B3C30009E4A7 /* Assets.xcassets */,
 				90707C5E2047B3C30009E4A7 /* LaunchScreen.storyboard */,
 				90707C612047B3C30009E4A7 /* Info.plist */,
+				90BB2F912070257300CD3239 /* RecipeItem.swift */,
 			);
 			path = StoveRemoteController;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				90707C582047B3C30009E4A7 /* LogViewController.swift in Sources */,
 				90707C542047B3C30009E4A7 /* AppDelegate.swift in Sources */,
+				90BB2F922070257300CD3239 /* RecipeItem.swift in Sources */,
 				90707C562047B3C30009E4A7 /* FirstViewController.swift in Sources */,
 				90BB2F8C20701AB800CD3239 /* ScheduleViewController.swift in Sources */,
 				90BB2F8E20701C0700CD3239 /* RecipeViewController.swift in Sources */,
