@@ -12,7 +12,10 @@ void setup()
 
     Particle.function("pulse", pulseToggle);
     Particle.function("diraction", dirToggle);
-    Particle.function("test", testToggle);
+    Particle.function("turnAngleTo", turnAngleTo);
+
+    Particle.variable("currentAngle", currentAngle);
+
 
     digitalWrite(led, LOW);
     digitalWrite(pulse, LOW);
@@ -23,7 +26,7 @@ void loop()
 {
 }
 
-int testToggle(String command)
+int turnAngleTo(String command)
 {
     int toAngle = command.toInt();
     int diff = toAngle - currentAngle;
@@ -39,7 +42,7 @@ int testToggle(String command)
         pulseNum = -diff / 0.45;
     }
     else
-        return 1;
+        return 0;
 
     for (int i = 0; i < pulseNum; i++)
     {
