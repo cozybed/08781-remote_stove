@@ -14,39 +14,59 @@ class FirstViewController: UIViewController {
     
     
     var direction = "clockwise"
-    
-    var rotation : CGFloat  = 0
-    
     var location:CGPoint = CGPoint()
-    var deg: CGFloat = 0
+    var last_position = CGPoint()
+    var rotation : CGFloat = 0
+    var center = CGPoint()
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
-        let location = touch.location(in: touch.view)
-        self.location = location
+        self.last_position = touch.location(in: self.view)
         
+    }
+    func rotate(){
+        stoveImg.transform = CGAffineTransform(rotationAngle: self.rotation)
+    }
+    func get_rad(point: CGPoint) ->CGFloat  {
+        if point.x == 0{
+            if point.y > self.stoveImg.center.y{
+                return 0
+            }
+            else{
+                return CGFloat(Float.pi)
+            }
+        }
+        let dif_x = point.x - self.center.x
+        let dif_y = point.y - self.center.y
+        if point.x > self.stoveImg.center.x{
+            return atan(dif_y/dif_x)
+            
+        }
+        return atan(dif_y/dif_x) + CGFloat(Float.pi)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
-        let location = touch.location(in: touch.view)
-        let move_x = location.x - self.location.x
-        let move_y = location.y - self.location.y
-        let deg = atan(move_y/move_x)
-        self.deg = deg
-    }
+        let location = touch.location(in: self.view)
+        
+        let rad1 = get_rad(point: self.last_position)
+        print("rotation\(rad1)")
+        print("touch location\(location)")
+        let rad2 = get_rad(point: location)
+        self.rotation += (rad2 - rad1)
+        self.last_position = location
+        rotate()
+}
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
-        let location = touch.location(in: touch.view)
-        print(self.deg)
-        rotateStove(direction: self.direction)
-        dataRequest(param: "pulse", dir : "pulse")
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         stoveImg.isUserInteractionEnabled = true
+        self.center = stoveImg.center
+        print(rotation)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,17 +74,17 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func rotateStove(direction: String) {
-        if direction == "clockwise" {
-            rotation = rotation + 360/8
-
-        }
-        else {
-            rotation = rotation - 360/8
-
-        }
-        self.stoveImg.transform = CGAffineTransform(rotationAngle: (CGFloat((rotation * .pi) / 360.0)))
-    }
+//    func rotateStove(direction: String) {
+//        if direction == "clockwise" {
+//            rotation = rotation + 360/8
+//
+//        }
+//        else {
+//            rotation = rotation - 360/8
+//
+//        }
+//        self.stoveImg.transform = CGAffineTransform(rotationAngle: (CGFloat((rotation * .pi) / 360.0)))
+//    }
     
     
     func dataRequest(param: String, dir : String) {
