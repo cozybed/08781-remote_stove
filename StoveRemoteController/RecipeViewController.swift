@@ -15,6 +15,13 @@ class RecipeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         print("Loaded recipe view controller.")
+        
+        var step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
+        
+        var recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[step1])
+        
+        print (step1)
+        print (recipe1)
     }
 
     override func didReceiveMemoryWarning() {

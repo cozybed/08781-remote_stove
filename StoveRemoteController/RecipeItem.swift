@@ -14,14 +14,24 @@ struct RecipeItem : Codable {
     var createdAt:Date
     var id: UUID
     
-    
-    
     struct StepItem : Codable {
         var level:Int
         var timeInSeconds:Int
+        
+        init (level:Int, timeInSeconds:Int) {
+            self.level = level
+            self.timeInSeconds = timeInSeconds
+        }
     }
     
     var steps : [StepItem]
+    
+    init (name: String, id: UUID, steps: [StepItem]) {
+        self.name = name
+        self.createdAt = Date()
+        self.id = id
+        self.steps = steps
+    }
 }
 
 
