@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		662A69A920706B4900F70C96 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662A69A820706B4900F70C96 /* JsonManager.swift */; };
 		90707C542047B3C30009E4A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90707C532047B3C30009E4A7 /* AppDelegate.swift */; };
 		90707C562047B3C30009E4A7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90707C552047B3C30009E4A7 /* FirstViewController.swift */; };
 		90707C582047B3C30009E4A7 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90707C572047B3C30009E4A7 /* LogViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		662A69A820706B4900F70C96 /* JsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
 		90707C502047B3C30009E4A7 /* StoveRemoteController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoveRemoteController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90707C532047B3C30009E4A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90707C552047B3C30009E4A7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 		90707C472047B3C30009E4A7 = {
 			isa = PBXGroup;
 			children = (
+				662A69A820706B4900F70C96 /* JsonManager.swift */,
 				90707C522047B3C30009E4A7 /* StoveRemoteController */,
 				90707C512047B3C30009E4A7 /* Products */,
 			);
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90707C582047B3C30009E4A7 /* LogViewController.swift in Sources */,
+				662A69A920706B4900F70C96 /* JsonManager.swift in Sources */,
 				90707C542047B3C30009E4A7 /* AppDelegate.swift in Sources */,
 				90BB2F922070257300CD3239 /* RecipeItem.swift in Sources */,
 				90707C562047B3C30009E4A7 /* FirstViewController.swift in Sources */,
