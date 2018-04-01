@@ -1,21 +1,37 @@
+#include "sortedLinkedList.h"
+#include <TimeAlarms.h>
+
 int led = D7;
 int pulse = D6;
 int dir = D5;
 int currentAngle = 0;
+String debug = "123";
+uint32_t freemem = System.freeMemory();
 
 void setup()
 {
+    /*
+    auto *list = new LinkedList();
+    for (int i = 0; i < 100; ++i)
+    {
+        list->add(rand() % 100);
+    }
+    */
+    //Serial.println("Hello World!");
+
     pinMode(led, OUTPUT);
     pinMode(pulse, OUTPUT);
     pinMode(dir, OUTPUT);
     currentAngle = 0;
 
     Particle.function("pulse", pulseToggle);
-    Particle.function("diraction", dirToggle);
+    Particle.function("direction", dirToggle);
     Particle.function("turnAngleTo", turnAngleTo);
+    Particle.function("newSchedule", newSchedule);
 
     Particle.variable("currentAngle", currentAngle);
-
+    Particle.variable("debug", debug);
+    Particle.variable("freemem", freemem);
 
     digitalWrite(led, LOW);
     digitalWrite(pulse, LOW);
@@ -24,6 +40,7 @@ void setup()
 
 void loop()
 {
+    Alarm.delay(100); // wait one second between clock display
 }
 
 int turnAngleTo(String command)
@@ -84,6 +101,7 @@ int pulseToggle(String command)
 
 int dirToggle(String command)
 {
+    freemem = System.freeMemory();
     if (command == "anti_clockwise")
     {
         digitalWrite(dir, LOW);
@@ -98,4 +116,28 @@ int dirToggle(String command)
     {
         return -1;
     }
+}
+
+int newSchedule(String command)
+{
+    debug = command;
+    int spacePosition = command.indexOf(' ');
+    if (spacePosition > -1)
+    {
+        long seconds = command.substring(0, spacePosition).toInt();
+        int degree = command.substring(spacePosition + 1).toInt();
+    }
+    else
+        return -1;
+
+    Alarm.timerOnce(3, OnceOnly);
+    return 1;
+}
+
+void OnceOnly()
+{
+    digitalWrite(led, HIGH);
+    delay(1000);
+    digitalWrite(led, LOW);
+    currentAngle = -1;
 }
