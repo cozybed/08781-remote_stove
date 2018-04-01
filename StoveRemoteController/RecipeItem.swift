@@ -13,6 +13,7 @@ struct RecipeItem : Codable {
     var name:String
     var createdAt:Date
     var id: UUID
+    var description: String
     
     struct StepItem : Codable {
         var level:Int
@@ -22,15 +23,21 @@ struct RecipeItem : Codable {
             self.level = level
             self.timeInSeconds = timeInSeconds
         }
+        
+        func to_string () -> String {
+            var str = "Level: " + String(self.level) + ", time: " + String(timeInSeconds) + "\n"
+            return str
+        }
     }
     
     var steps : [StepItem]
     
-    init (name: String, id: UUID, steps: [StepItem]) {
+    init (name: String, id: UUID, steps: [StepItem], description: String) {
         self.name = name
         self.createdAt = Date()
         self.id = id
         self.steps = steps
+        self.description = description
     }
 }
 

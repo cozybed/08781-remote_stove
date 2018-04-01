@@ -8,20 +8,61 @@
 
 import UIKit
 
-class RecipeViewController: UIViewController {
+var recipe_arr_str = [""]
 
+let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[], description:"13333")
+
+var recipe_arr = [recipe1]
+
+var myIndex = 0
+
+class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return recipe_arr_str.count
+    }
+    
+  
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell" )
+        cell.textLabel?.text = recipe_arr_str[indexPath.row]
+        
+        return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "segue", sender: self)
+        
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("Loaded recipe view controller.")
         
-        var step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
+        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
+        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
+        let steps = [step1, step2]
+        let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:steps, description:"13333")
+        let recipe2 = RecipeItem(name:"Ramen", id: UUID.init(), steps:steps, description: "34444")
         
-        var recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[step1])
         
-        print (step1)
+        recipe_arr = [recipe1, recipe2]
+        recipe_arr_str = ["Tomato Soup", "Ramen"]
+        
+        
+        
         print (recipe1)
+
+    
+    
     }
 
     override func didReceiveMemoryWarning() {

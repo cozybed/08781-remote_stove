@@ -16,6 +16,7 @@
 		90BB2F8C20701AB800CD3239 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F8B20701AB800CD3239 /* ScheduleViewController.swift */; };
 		90BB2F8E20701C0700CD3239 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */; };
 		90BB2F922070257300CD3239 /* RecipeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F912070257300CD3239 /* RecipeItem.swift */; };
+		90BB2F942070560B00CD3239 /* RecipeDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		90BB2F8B20701AB800CD3239 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		90BB2F912070257300CD3239 /* RecipeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItem.swift; sourceTree = "<group>"; };
+		90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				90707C572047B3C30009E4A7 /* LogViewController.swift */,
 				90BB2F8B20701AB800CD3239 /* ScheduleViewController.swift */,
 				90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */,
+				90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */,
 				90707C592047B3C30009E4A7 /* Main.storyboard */,
 				90707C5C2047B3C30009E4A7 /* Assets.xcassets */,
 				90707C5E2047B3C30009E4A7 /* LaunchScreen.storyboard */,
@@ -154,6 +157,7 @@
 				90707C562047B3C30009E4A7 /* FirstViewController.swift in Sources */,
 				90BB2F8C20701AB800CD3239 /* ScheduleViewController.swift in Sources */,
 				90BB2F8E20701C0700CD3239 /* RecipeViewController.swift in Sources */,
+				90BB2F942070560B00CD3239 /* RecipeDetialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
