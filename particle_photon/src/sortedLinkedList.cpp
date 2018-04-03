@@ -59,6 +59,14 @@ void sortedLinkedList::deleteFront()
     }
 }
 
+int sortedLinkedList::getFront()
+{
+  if (this->head == nullptr)
+      return -1;
+  else
+      return this->head->degree;
+}
+
 int sortedLinkedList::getLength()
 {
     return this->length;

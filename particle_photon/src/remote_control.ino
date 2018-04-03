@@ -115,7 +115,6 @@ int dirToggle(String command)
 
 int newSchedule(String command)
 {
-
     debug = command;
     int spacePosition = command.indexOf(' ');
     if (spacePosition > -1)
@@ -140,8 +139,13 @@ int newSchedule(String command)
 
 void OnceOnly()
 {
-    digitalWrite(led, HIGH);
-    delay(1000);
-    digitalWrite(led, LOW);
-    currentAngle = -1;
+    int degree = list->getFront();
+    if (degree == -1)
+        return;
+    else
+    {
+        turnAngleTo(String(degree, DEC));
+        list->deleteFront();
+        return;
+    }
 }
