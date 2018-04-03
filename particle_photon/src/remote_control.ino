@@ -7,17 +7,12 @@ int dir = D5;
 int currentAngle = 0;
 String debug = "123";
 uint32_t freemem = System.freeMemory();
+auto *list = new sortedLinkedList();
 
 void setup()
 {
-    /*
-    auto *list = new LinkedList();
-    for (int i = 0; i < 100; ++i)
-    {
-        list->add(rand() % 100);
-    }
-    */
-    //Serial.println("Hello World!");
+    Serial.begin();
+    Serial.println("Hello World!");
 
     pinMode(led, OUTPUT);
     pinMode(pulse, OUTPUT);
@@ -120,18 +115,27 @@ int dirToggle(String command)
 
 int newSchedule(String command)
 {
+
     debug = command;
     int spacePosition = command.indexOf(' ');
     if (spacePosition > -1)
     {
         long seconds = command.substring(0, spacePosition).toInt();
         int degree = command.substring(spacePosition + 1).toInt();
+        long diff = seconds - Time.now();
+        if (diff > 0)
+        {
+            Alarm.timerOnce(diff, OnceOnly);
+            list->add(seconds, degree);
+            return 1;
+        }
+        else
+            return -1;
     }
     else
         return -1;
 
-    Alarm.timerOnce(3, OnceOnly);
-    return 1;
+    return -1;
 }
 
 void OnceOnly()
