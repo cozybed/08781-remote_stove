@@ -27,6 +27,8 @@ public:
 
     void deleteFront();
 
+    int getFront();
+
     int getLength();
 };
 
