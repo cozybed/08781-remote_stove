@@ -12,13 +12,15 @@ class FirstViewController: UIViewController {
 
     @IBOutlet weak var stoveImg: UIImageView!
     
+    @IBOutlet var progressView: UIView!
     
     var direction = "clockwise"
     var location:CGPoint = CGPoint()
     var last_position = CGPoint()
     var rotation : CGFloat = 0
     var center = CGPoint()
-    
+    var progress: UIProgressView? = nil
+    var progressList = [UIProgressView?]()
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         self.last_position = touch.location(in: self.view)
@@ -65,9 +67,59 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         stoveImg.isUserInteractionEnabled = true
         self.center = stoveImg.center
-        print(rotation)
-
+        print(center)
+        
+        
+//        let button = UIButton()
+////        button.frame = CGRect(x: self.view.frame.size.width - 60, y: 60, width: 50, height: 50)
+//        button.frame = CGRect(x: self.center.x, y: self.center.x, width: 12, height: 22)
+//        button.backgroundColor = UIColor.red
+//        button.setTitle("Name your Button ", for: .normal)
+//        self.view.addSubview(button)
+//        progressView.transform.scaledBy(x: 1, y: 20)
+//        var transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 6.0)
+        
+        
+        
+        
+        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
+        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
+        var stepList = [RecipeItem.StepItem]()
+        stepList.append(step1)
+        stepList.append(step2)
+        for index in 0...stepList.count{
+            let pp = UIProgressView(progressViewStyle: .default)
+//            pp.center = self.view.center
+            let thisFrame = CGRect(x: 40, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)
+            let thisFrame2 = CGRect(x: 40, y: 100 + index * 100 - 10, width: Int(self.view.frame.width - 100), height: 20)
+            pp.frame = thisFrame
+            let textView = UILabel(frame: thisFrame2)
+            textView.text = "step \(index)"
+            textView.textAlignment = NSTextAlignment.center
+            textView.numberOfLines = 0
+            textView.layer.borderColor = UIColor.black.cgColor
+//            textView.layer.borderWidth = 2
+            self.view.addSubview(pp)
+            self.view.addSubview(textView)
+            textView.backgroundColor = UIColor.clear
+            pp.transform = CGAffineTransform(scaleX: 1, y: 20)
+            pp.setProgress(0.5, animated: true)
+            pp.progressTintColor = UIColor.green
+            pp.trackTintColor = UIColor.blue
+            self.progressList.append(pp)
+        }
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.tickDown)), userInfo: nil, repeats: true)
+        self.progress = self.progressList.first!
+        
+      
+        
     }
+    @objc func tickDown()
+    {
+        self.progress!.setProgress(self.progress!.progress + 0.1, animated: true)
+        print("asdf")
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -106,7 +158,7 @@ class FirstViewController: UIViewController {
                 return
             }
             let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("*****This is the data 4: \(dataString)") //JSONSerialization
+            print("*****This is the data 4: \(String(describing: dataString))") //JSONSerialization
         }
         task.resume()
     }
