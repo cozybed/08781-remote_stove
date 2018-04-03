@@ -39,6 +39,12 @@ struct RecipeItem : Codable {
         self.steps = steps
         self.description = description
     }
+    
+    func to_string () -> String {
+        
+        var str = "name: " + String (self.name) + "\n"
+        return str
+    }
 }
 
 
