@@ -8,10 +8,8 @@
     <br>
     <form action="https://api.particle.io/v1/devices/33001c000347353137323334/turnAngleTo?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
       method="POST">
-      Tell your device what to do!
-      <br>
-      <br>
-      <input type="text" name="arg" value="45">Start.
+      Turn to
+      <input type="text" name="arg" value="45">Degree.
       <br>
       <input type="submit" value="Do it!">
     </form>
@@ -20,7 +18,7 @@
     <br>
     <form action="https://api.particle.io/v1/devices/33001c000347353137323334/direction?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
       method="POST">
-      Tell your device what to do!
+      Change direction:
       <br>
       <br>
       <input type="radio" name="arg" value="clockwise">Dir Clockwaise.
@@ -28,20 +26,32 @@
       <input type="radio" name="arg" value="anti_clockwise">Dir Anti Clockwise.
       <br>
       <br>
-      <input type="submit" value="Do it!">
+      <input type="submit" value="Set!">
     </form>
     <br>
     <br>
     <br>
     <form action="https://api.particle.io/v1/devices/33001c000347353137323334/pulse?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
       method="POST">
-      Tell your device what to do!
+      Turn 22.5 degree
       <br>
       <br>
       <input type="radio" name="arg" value="pulse">Start.
+      <input type="submit" value="Do it!">
+    </form>
+    <br>
+    <br>
+    <br>
+    <form action="https://api.particle.io/v1/devices/33001c000347353137323334/newSchedule?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
+      method="POST">
+      Schedule
+      <br>
+      <br>
+      <input type="text" name="arg"  value="1400647897 30">Time degree.
       <br>
       <input type="submit" value="Do it!">
     </form>
+
   </center>
 </body>
 
