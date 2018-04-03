@@ -22,10 +22,8 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         var duration: String = durationField.text!
         var txt : String  = stageTextField.text
-        txt += "\nLevel:" + selected + ", for " + duration + " mins."
-       
+        txt += "\nLevel:" + selected + " for " + duration + " mins."
         stageTextField.text = txt
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +63,4 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         selected = pickerData[row]
         return pickerData[row]
     }
-    
-    
-
 }

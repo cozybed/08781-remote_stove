@@ -25,7 +25,7 @@ struct RecipeItem : Codable {
         }
         
         func to_string () -> String {
-            var str = "Level: " + String(self.level) + ", time: " + String(timeInSeconds) + "\n"
+            var str = "Level: " + String(self.level) + " for : " + String(timeInSeconds) + " minutes. \n"
             return str
         }
     }

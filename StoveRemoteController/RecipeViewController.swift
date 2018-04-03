@@ -10,7 +10,7 @@ import UIKit
 
 var recipe_arr_str = [""]
 
-let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[], description:"13333")
+let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[], description:"3 Tomatos\n 1 can of tomato sause\n 1 onion\n")
 
 var recipe_arr = [recipe1]
 
@@ -54,12 +54,13 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
         let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
         let steps = [step1, step2]
-        let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:steps, description:"13333")
-        let recipe2 = RecipeItem(name:"Ramen", id: UUID.init(), steps:steps, description: "34444")
+        let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:steps, description:"3 Tomatos\n 1 can of tomato sause\n 1 onion\n")
+        let recipe2 = RecipeItem(name:"Ramen", id: UUID.init(), steps:steps, description: "water 300cc bring to boil.")
+        let recipe3 = RecipeItem(name:"Hard Boiled Eggs", id: UUID.init(), steps:steps, description: "8 mins")
         
         
-        recipe_arr = [recipe1, recipe2]
-        recipe_arr_str = ["Tomato Soup", "Ramen"]
+        recipe_arr = [recipe1, recipe2, recipe3]
+        recipe_arr_str = ["Tomato Soup", "Ramen", "Hard Boiled Eggs"]
         
         
         
