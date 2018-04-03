@@ -18,6 +18,10 @@ var myIndex = 0
 
 class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func AddNewRecipe(_ sender: Any) {
+        print (recipe_arr.count)
+        myIndex = recipe_arr.count
+    }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {

@@ -75,12 +75,12 @@
 				90BB2F8B20701AB800CD3239 /* ScheduleViewController.swift */,
 				90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */,
 				90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */,
+				901077B92073879D00100A3C /* RecipeEditViewController.swift */,
 				90707C592047B3C30009E4A7 /* Main.storyboard */,
 				90707C5C2047B3C30009E4A7 /* Assets.xcassets */,
 				90707C5E2047B3C30009E4A7 /* LaunchScreen.storyboard */,
 				90707C612047B3C30009E4A7 /* Info.plist */,
 				90BB2F912070257300CD3239 /* RecipeItem.swift */,
-				901077B92073879D00100A3C /* RecipeEditViewController.swift */,
 			);
 			path = StoveRemoteController;
 			sourceTree = "<group>";

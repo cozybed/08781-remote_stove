@@ -23,7 +23,6 @@ class RecipeDetialViewController: UIViewController {
         
         //recipe_arr
         DataManager.save (recipe_arr[0], with: "testRecipie.log")
-        print ("laalalal")
         
         var all_data = DataManager.loadAll( RecipeItem.self)
         print (all_data)
