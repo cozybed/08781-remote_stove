@@ -50,7 +50,6 @@
 		90707C472047B3C30009E4A7 = {
 			isa = PBXGroup;
 			children = (
-				662A69A820706B4900F70C96 /* JsonManager.swift */,
 				90707C522047B3C30009E4A7 /* StoveRemoteController */,
 				90707C512047B3C30009E4A7 /* Products */,
 			);
@@ -67,6 +66,7 @@
 		90707C522047B3C30009E4A7 /* StoveRemoteController */ = {
 			isa = PBXGroup;
 			children = (
+				662A69A820706B4900F70C96 /* JsonManager.swift */,
 				90707C532047B3C30009E4A7 /* AppDelegate.swift */,
 				90707C552047B3C30009E4A7 /* FirstViewController.swift */,
 				90707C572047B3C30009E4A7 /* LogViewController.swift */,
