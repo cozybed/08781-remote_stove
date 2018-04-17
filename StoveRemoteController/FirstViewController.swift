@@ -130,8 +130,6 @@ class FirstViewController: UIViewController {
     {
         self.progress!.setProgress(self.progress!.progress + 0.1, animated: true)
         print("asdf")
-=======
->>>>>>> 07b1fbbff9d828e25e8362ffdc9544d08520060c
     }
     
 
