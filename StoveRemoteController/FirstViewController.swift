@@ -89,7 +89,6 @@ class FirstViewController: UIViewController {
         stepList.append(step2)
         for index in 0...stepList.count{
             let pp = UIProgressView(progressViewStyle: .default)
-//            pp.center = self.view.center
             let thisFrame = CGRect(x: 40, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)
             let thisFrame2 = CGRect(x: 40, y: 100 + index * 100 - 10, width: Int(self.view.frame.width - 100), height: 20)
             pp.frame = thisFrame
@@ -98,7 +97,6 @@ class FirstViewController: UIViewController {
             textView.textAlignment = NSTextAlignment.center
             textView.numberOfLines = 0
             textView.layer.borderColor = UIColor.black.cgColor
-//            textView.layer.borderWidth = 2
             self.view.addSubview(pp)
             self.view.addSubview(textView)
             textView.backgroundColor = UIColor.clear
