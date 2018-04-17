@@ -1,21 +1,32 @@
+#include "sortedLinkedList.h"
+#include <TimeAlarms.h>
+
 int led = D7;
 int pulse = D6;
 int dir = D5;
 int currentAngle = 0;
+String debug = "123";
+uint32_t freemem = System.freeMemory();
+auto *list = new sortedLinkedList();
 
 void setup()
 {
+    Serial.begin();
+    Serial.println("Hello World!");
+
     pinMode(led, OUTPUT);
     pinMode(pulse, OUTPUT);
     pinMode(dir, OUTPUT);
     currentAngle = 0;
 
     Particle.function("pulse", pulseToggle);
-    Particle.function("diraction", dirToggle);
+    Particle.function("direction", dirToggle);
     Particle.function("turnAngleTo", turnAngleTo);
+    Particle.function("newSchedule", newSchedule);
 
     Particle.variable("currentAngle", currentAngle);
-
+    Particle.variable("debug", debug);
+    Particle.variable("freemem", freemem);
 
     digitalWrite(led, LOW);
     digitalWrite(pulse, LOW);
@@ -24,6 +35,7 @@ void setup()
 
 void loop()
 {
+    Alarm.delay(100); // wait one second between clock display
 }
 
 int turnAngleTo(String command)
@@ -84,6 +96,7 @@ int pulseToggle(String command)
 
 int dirToggle(String command)
 {
+    freemem = System.freeMemory();
     if (command == "anti_clockwise")
     {
         digitalWrite(dir, LOW);
@@ -97,5 +110,42 @@ int dirToggle(String command)
     else
     {
         return -1;
+    }
+}
+
+int newSchedule(String command)
+{
+    debug = command;
+    int spacePosition = command.indexOf(' ');
+    if (spacePosition > -1)
+    {
+        long seconds = command.substring(0, spacePosition).toInt();
+        int degree = command.substring(spacePosition + 1).toInt();
+        long diff = seconds - Time.now();
+        if (diff > 0)
+        {
+            Alarm.timerOnce(diff, OnceOnly);
+            list->add(seconds, degree);
+            return 1;
+        }
+        else
+            return -1;
+    }
+    else
+        return -1;
+
+    return -1;
+}
+
+void OnceOnly()
+{
+    int degree = list->getFront();
+    if (degree == -1)
+        return;
+    else
+    {
+        turnAngleTo(String(degree, DEC));
+        list->deleteFront();
+        return;
     }
 }

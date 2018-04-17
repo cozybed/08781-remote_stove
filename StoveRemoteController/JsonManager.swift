@@ -23,7 +23,7 @@ public class DataManager {
     // Save any kind of codable objects
     static func save <T:Encodable> (_ object:T, with fileName:String) {
         let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory: false)
-        
+        print (url)
         do {
             let data = try JSONEncoder().encode(object)
             if FileManager.default.fileExists(atPath: url.path) {

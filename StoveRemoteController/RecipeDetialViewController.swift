@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class RecipeDetialViewController: UIViewController {
 
     
@@ -18,6 +19,22 @@ class RecipeDetialViewController: UIViewController {
     
     @IBOutlet weak var descLabel: UITextView!
     
+    @IBAction func testSave(_ sender: Any) {
+        
+        //recipe_arr
+        DataManager.save (recipe_arr[0], with: "testRecipie.log")
+        
+        var all_data = DataManager.loadAll( RecipeItem.self)
+        print (all_data)
+        
+        var blah = ""
+        for data in all_data {
+            blah += data.to_string()
+        }
+        
+        descLabel.text  = blah
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
