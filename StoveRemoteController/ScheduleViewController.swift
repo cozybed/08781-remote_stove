@@ -46,13 +46,20 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         self.levelField.delegate = self
         self.levelField.delegate = self
         self.blurEffect = self.blurView.effect
+        self.blurView.alpha = 0
         self.blurView.isUserInteractionEnabled = false
         self.blurView.effect = nil
-        self.popUpView.layer.cornerRadius = 5
+        self.popUpView.layer.cornerRadius = 15
+        
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        view.addGestureRecognizer(swipeUp)
 
     }
 
-
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
     @IBAction func popUpSaveItemAction(_ sender: Any) {
         popDown()
     }
@@ -65,6 +72,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         self.popUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         self.popUpView.alpha = 0;
         UIView.animate(withDuration: 0.5){
+            self.blurView.alpha = 1
             self.blurView.effect = self.blurEffect
             self.popUpView.alpha = 1
             self.popUpView.transform = CGAffineTransform.identity
@@ -75,6 +83,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
             self.popUpView.alpha = 0
             self.popUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.blurView.effect = nil
+            self.blurView.alpha = 0
         }
             , completion: {(success : Bool) in
                 self.popUpView.removeFromSuperview()

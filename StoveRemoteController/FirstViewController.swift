@@ -99,10 +99,10 @@ class FirstViewController: UIViewController {
         
         
         
-        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
-        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
-        let step3  = RecipeItem.StepItem(level:4,timeInSeconds:20)
-        let step4  = RecipeItem.StepItem(level:5,timeInSeconds:20)
+        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:2)
+        let step2  = RecipeItem.StepItem(level:2,timeInSeconds:4)
+        let step3  = RecipeItem.StepItem(level:3,timeInSeconds:6)
+        let step4  = RecipeItem.StepItem(level:4,timeInSeconds:8)
         var stepList = [RecipeItem.StepItem]()
         stepList.append(step1)
         stepList.append(step2)
@@ -127,18 +127,20 @@ class FirstViewController: UIViewController {
             let thisFrame = CGRect(x: 40, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)
             let thisFrame2 = CGRect(x: 40, y: 100 + index * 100 - 10, width: Int(self.view.frame.width - 100), height: 20)
             pp.frame = thisFrame
+            pp.tintColor = UIColor.gray
+            pp.trackTintColor = UIColor.black
+            pp.transform = CGAffineTransform(scaleX: 1, y: 20)
+            pp.setProgress(0.0, animated: true)
+            pp.layer.borderColor = UIColor.gray.cgColor
             let textView = UILabel(frame:thisFrame2)
             textView.text = "level \(self.stepList[index].level) + for \(self.stepList[index].timeInSeconds) seconds"
             textView.textAlignment = NSTextAlignment.center
             textView.numberOfLines = 0
             textView.layer.borderColor = UIColor.black.cgColor
+            textView.backgroundColor = UIColor.clear
+            textView.textColor = UIColor.white
             self.view.addSubview(pp)
             self.view.addSubview(textView)
-            textView.backgroundColor = UIColor.clear
-            pp.transform = CGAffineTransform(scaleX: 1, y: 20)
-            pp.setProgress(0.0, animated: true)
-            pp.progressTintColor = UIColor.green
-            pp.trackTintColor = UIColor.blue
             self.progressList.append(pp)
             self.textViewList.append(textView)
             if index == 2{
@@ -202,7 +204,7 @@ class FirstViewController: UIViewController {
                 return
             }
             let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("*****This is the data 4: \(dataString)") //JSONSerialization
+            print("*****This is the data 4: \(String(describing: dataString))") //JSONSerialization
         }
         task.resume()
     }
