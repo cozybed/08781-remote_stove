@@ -9,15 +9,25 @@
 import UIKit
 import WebKit
 
-class CamViewController: UIViewController {
+class CamViewController: UIViewController, NSURLConnectionDelegate {
 
     @IBOutlet weak var webview: WKWebView!
     
+
+    /*
+     * Hard coding url, username and password info to bypass authentication.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string:"https://www.youtube.com/")
-        let request = URLRequest(url: url!)
-        webview.load(request)
+        
+        let url_string = "http://a-eight.asuscomm.com:7021/mjpg/1/video.mjpg"
+        let urlComponents = NSURLComponents(string:url_string);
+        urlComponents?.user = "root";
+        urlComponents?.password = "safeguardian";
+        
+        let url = urlComponents?.url;
+        let requestObj = URLRequest(url: url!);
+        webview.load(requestObj)
         // Do any additional setup after loading the view.
     }
 
