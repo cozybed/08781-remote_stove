@@ -10,6 +10,12 @@ import UIKit
 
 class AuthViewController: UIViewController {
 
+    @IBAction func enterButton(_ sender: UIButton) {
+        let res = testfunc()
+        print (res)
+        self.performSegue(withIdentifier: "FirstViewID", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print ("aaa")
@@ -32,5 +38,9 @@ class AuthViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func testfunc () -> Bool {
+        return false
+    }
 
 }
