@@ -8,8 +8,8 @@
 
 import UIKit
 import LocalAuthentication
-
-
+var startSchedule = false
+var globalStepList = [RecipeItem.StepItem]();
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var stoveImg: UIImageView!
@@ -36,6 +36,14 @@ class FirstViewController: UIViewController {
     func rotate() -> Float{
         stoveImg.transform = CGAffineTransform(rotationAngle: self.rotation)
         return Float(self.rotation) * (180/Float.pi)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if startSchedule {
+            self.stepList = globalStepList
+            drawProgress()
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.tickDown)), userInfo: nil, repeats: true)
+        }
+        
     }
     func get_rad(point: CGPoint) ->CGFloat  {
         if point.x == 0{
@@ -109,8 +117,8 @@ class FirstViewController: UIViewController {
         stepList.append(step3)
         stepList.append(step4)
         self.stepList = stepList;
-        drawProgress()
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.tickDown)), userInfo: nil, repeats: true)
+//        drawProgress()
+//        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.tickDown)), userInfo: nil, repeats: true)
 
     }
     func drawProgress(){
@@ -118,10 +126,12 @@ class FirstViewController: UIViewController {
             self.progressList[index]?.removeFromSuperview()
             self.textViewList[index]?.removeFromSuperview()
         }
-        print("hhhhh")
+        
+        
         self.progressList.removeAll()
         self.textViewList.removeAll()
-        
+
+
         for index in 0..<self.stepList.count{
             let pp = UIProgressView(progressViewStyle: .default)
             let thisFrame = CGRect(x: 40, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)

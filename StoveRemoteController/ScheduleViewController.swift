@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
+class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var levelField: UIPickerView!
     
@@ -16,17 +16,42 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var stageTextField: UITextView!
     var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
-    
+    var stepList = [RecipeItem.StepItem]()
     var selected : String = "1"
-    @IBAction func addStageClicked(_ sender: Any) {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        var duration: String = durationField.text!
-        var txt : String  = stageTextField.text
-        txt += "\nLevel:" + selected + " for " + duration + " mins."
-        stageTextField.text = txt
+        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        return string == numberFiltered
     }
     
     
+    
+    @IBAction func addStageClicked(_ sender: Any) {
+        
+        let duration: String = durationField.text!
+        var txt : String  = stageTextField.text
+        txt += "\nLevel:" + selected + " for " + duration + " mins."
+        stageTextField.text = txt
+        
+        let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: Int(duration)!)
+        self.stepList.append(step)
+    }
+    
+    
+    
+    @IBAction func StartSchedule(_ sender: Any) {
+//        let sb = UIStoryboard(name:"Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "FirstViewID") as UIViewController
+//        self.present(vc, animated: true, completion: nil)
+//        self.presentingViewController(vc, animated: true, completion: nil)
+        globalStepList = self.stepList
+        self.tabBarController?.selectedIndex = 0;
+        startSchedule = true
+        
+    }
     
     
     
@@ -39,11 +64,14 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
         print ("Loaded schedule view controller.")
-
-        self.levelField.delegate = self
+//        self.durationField.delegate = self
+//        self.levelField.delegate = self
+//        self.levelField.delegate = self
+        self.durationField.text = "1"
+        self.durationField.delegate = self
         self.levelField.delegate = self
         self.blurEffect = self.blurView.effect
         self.blurView.alpha = 0
