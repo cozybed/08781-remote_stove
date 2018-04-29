@@ -33,14 +33,11 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         let duration: String = durationField.text!
         var txt : String  = stageTextField.text
-        txt += "\nLevel:" + selected + " for " + duration + " mins."
+        txt += "\nLevel:" + selected + " for " + duration + " mins. \n"
         stageTextField.text = txt
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: Int(duration)!)
         self.stepList.append(step)
-        
-        
     }
-    
     
     
     @IBAction func StartSchedule(_ sender: Any) {
@@ -52,12 +49,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         startSchedule = true
         self.stageTextField.text = ""
         self.tabBarController?.selectedIndex = 0;
-        
-        
     }
-    
-    
-    
 
     @IBOutlet var popUpView: UIView!
 
@@ -93,11 +85,17 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
     }
-    @IBOutlet weak var descriptionField: UITextField!
+    
+    @IBOutlet weak var descriptionViewField: UITextView!
+    
+    @IBAction func cancelSave(_ sender: Any) {
+        popDown()
+    }
     @IBAction func popUpSaveItemAction(_ sender: Any) {
         
-        let recipeItem = RecipeItem(name: inputNameField.text!, id: UUID.init(), steps: self.stepList, description: descriptionField.text!)
+        let recipeItem = RecipeItem(name: inputNameField.text!, id: UUID.init(), steps: self.stepList, description: descriptionViewField.text!)
         DataManager.save (recipeItem, with: recipeItem.id.uuidString)
+
         popDown()
     }
     @IBAction func saveRecipeAction(_ sender: Any) {

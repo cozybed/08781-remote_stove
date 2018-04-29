@@ -9,42 +9,23 @@
 import UIKit
 import LocalAuthentication
 
-
 class AuthViewController: UIViewController {
-
+    
+    @IBOutlet weak var authText: UILabel!
+    
     @IBAction func enterButton(_ sender: UIButton) {
         authenticationWithTouchID()
-        
-    
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print ("aaa")
         // Do any additional setup after loading the view.
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func testfunc () -> Bool {
-        return false
-    }
-
 }
 
 //https://gist.github.com/santoshbotre/d4ef8b4da366e63f6cf0178e03f17749#file-viewcontroller-swift
@@ -58,17 +39,22 @@ extension AuthViewController {
         let reasonString = "To turn on the stove."
         
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
-            
+       
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 
                 if success {
                     print ("Success!!!")
-                    self.performSegue(withIdentifier: "FirstViewID", sender: self)
+                    self.authText.text = "Connecting to Stove Knob.."
+                    let next:UIViewController = (self.storyboard?.instantiateViewController(withIdentifier: "TabBarControllerID"))!
+                    //self.navigationController?.pushViewController(next, animated: true)
+                    self.present(next, animated: true, completion: nil)
+                    
                     
                 } else {
                     //TODO: User did not authenticate successfully, look at error and take appropriate action
                     print ("User did not authenticate successfully")
                     guard let error = evaluateError else {
+                        print ("error..")
                         return
                     }
                     print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: error._code))
@@ -152,7 +138,6 @@ extension AuthViewController {
         default:
             message = evaluatePolicyFailErrorMessageForLA(errorCode: errorCode)
         }
-        
         return message
     }
 }

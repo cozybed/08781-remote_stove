@@ -59,10 +59,7 @@ public class DataManager {
         }else{
             fatalError("Data unavailable at path \(url.path)")
         }
-        
     }
-    
-
     
     // Load all files from a directory
     static func loadAll <T:Decodable> (_ type:T.Type) -> [T] {
