@@ -443,6 +443,18 @@
                                     <action selector="deleteRecipeButtonClicked:" destination="HY1-oo-TeW" eventType="touchUpInside" id="MVB-9l-IcJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-HC-uxb">
+                                <rect key="frame" x="48" y="584" width="100" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="EPb-HH-ZTa" kind="show" id="uXf-YC-Cew"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="InD-8b-gIB"/>
@@ -456,7 +468,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Xg-b9-rAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432" y="1765"/>
+            <point key="canvasLocation" x="2430.434782608696" y="1764.9456521739132"/>
         </scene>
         <!--Recipe Edit View Controller-->
         <scene sceneID="dqC-ID-kRa">
@@ -681,4 +693,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="uXf-YC-Cew"/>
+    </inferredMetricsTieBreakers>
 </document>
