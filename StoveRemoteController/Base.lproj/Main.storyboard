@@ -553,7 +553,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="if_flame_298779" translatesAutoresizingMaskIntoConstraints="NO" id="y67-UF-iwK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AppIconFront" translatesAutoresizingMaskIntoConstraints="NO" id="y67-UF-iwK">
                                 <rect key="frame" x="95" y="214" width="231" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -674,9 +674,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppIconFront" width="722" height="700"/>
         <image name="Picture1" width="427" height="428"/>
         <image name="first" width="30" height="30"/>
-        <image name="if_flame_298779" width="256" height="256"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
