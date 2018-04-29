@@ -42,7 +42,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
     
-    
     @IBAction func StartSchedule(_ sender: Any) {
 //        let sb = UIStoryboard(name:"Main", bundle: nil)
 //        let vc = sb.instantiateViewController(withIdentifier: "FirstViewID") as UIViewController
@@ -52,12 +51,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         startSchedule = true
         self.stageTextField.text = ""
         self.tabBarController?.selectedIndex = 0;
-        
-        
     }
-    
-    
-    
 
     @IBOutlet var popUpView: UIView!
 

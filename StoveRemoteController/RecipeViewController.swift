@@ -61,9 +61,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         recipe_arr = [recipe1, recipe2, recipe3]
         recipe_arr_str = ["Tomato Soup", "Ramen", "Hard Boiled Eggs"]
-        
-        
-        
+    
         print (recipe1)
 
     
