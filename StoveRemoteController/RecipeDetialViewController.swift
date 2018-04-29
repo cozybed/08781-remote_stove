@@ -43,11 +43,9 @@ class RecipeDetialViewController: UIViewController {
         
         print ("Current index is:")
         print (myIndex)
-        DataManager.delete(cur_recipe.name)
-        recipe_arr.remove(at: myIndex)
-        myIndex = 0
-        
-        print (recipe_arr.count)
+        DataManager.delete(cur_recipe.id.uuidString)
+        //recipe_arr.remove(at: myIndex)
+        //myIndex = 0
         
         
         let next:UIViewController = (self.storyboard?.instantiateViewController(withIdentifier: "all_recipe_board"))!
