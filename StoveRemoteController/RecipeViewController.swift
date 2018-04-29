@@ -44,6 +44,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         print("recipe view will appear")
         recipe_arr = DataManager.loadAll(RecipeItem.self)
@@ -51,6 +52,8 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for recipe in recipe_arr {
             recipe_arr_str.append(recipe.name)
         }
+        self.tableView.reloadData()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

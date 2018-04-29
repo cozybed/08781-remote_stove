@@ -25,7 +25,9 @@ public:
 
     void add(long time, int degree);
 
-    void deleteFront();
+    bool deleteFront();
+
+    void deleteAll();
 
     int getFront();
 

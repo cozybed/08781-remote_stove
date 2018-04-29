@@ -23,6 +23,7 @@ void setup()
     Particle.function("direction", dirToggle);
     Particle.function("turnAngleTo", turnAngleTo);
     Particle.function("newSchedule", newSchedule);
+    Particle.function("discardSchedule", discardSchedule);
 
     Particle.variable("currentAngle", currentAngle);
     Particle.variable("debug", debug);
@@ -148,4 +149,10 @@ void OnceOnly()
         list->deleteFront();
         return;
     }
+}
+
+int discardSchedule()
+{
+    list->deleteAll();
+    return 1;
 }
