@@ -40,16 +40,66 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
     
+    @IBOutlet var startScheduleView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBAction func StartSchedule(_ sender: Any) {
 //        let sb = UIStoryboard(name:"Main", bundle: nil)
 //        let vc = sb.instantiateViewController(withIdentifier: "FirstViewID") as UIViewController
 //        self.present(vc, animated: true, completion: nil)
 //        self.presentingViewController(vc, animated: true, completion: nil)
+        popUp2()
+        
+    }
+    
+    @IBAction func goStartSchedule(_ sender: Any) {
         globalStepList = self.stepList
         startSchedule = true
         self.stageTextField.text = ""
         self.tabBarController?.selectedIndex = 0;
+        popDown2()
     }
+    
+    func popUp2() {
+        self.view.addSubview(self.startScheduleView)
+        self.startScheduleView.center = self.view.center
+        self.startScheduleView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        self.startScheduleView.alpha = 0;
+        UIView.animate(withDuration: 0.5){
+            self.blurView.alpha = 1
+            self.blurView.effect = self.blurEffect
+            self.startScheduleView.alpha = 1
+            self.startScheduleView.transform = CGAffineTransform.identity
+        }
+    }
+    func popDown2() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.startScheduleView.alpha = 0
+            self.startScheduleView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.blurView.effect = nil
+            self.blurView.alpha = 0
+        }
+            , completion: {(success : Bool) in
+                self.startScheduleView.removeFromSuperview()
+        })
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     @IBOutlet var popUpView: UIView!
 
