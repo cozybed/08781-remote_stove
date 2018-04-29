@@ -28,9 +28,9 @@ class RecipeEditViewController: UIViewController {
             
         }else{
             
-            let curRecipe = recipe_arr [myIndex]
-            recipeNameField.text = curRecipe.name
-            recipeDescriptionField.text = curRecipe.description
+            let cur_recipe = recipe_arr [myIndex]
+            recipeNameField.text = cur_recipe.name
+            recipeDescriptionField.text = cur_recipe.description
         }
         
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -335,7 +335,7 @@
         <!--Recipe-->
         <scene sceneID="6rq-aH-GOv">
             <objects>
-                <viewController storyboardIdentifier="all_recipe_board" title="Recipe" id="fbO-1Z-wX5" customClass="RecipeViewController" customModule="StoveRemoteController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Recipe" id="fbO-1Z-wX5" customClass="RecipeViewController" customModule="StoveRemoteController" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6YC-8b-7ZK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -634,7 +634,7 @@
         <!--Recipe-->
         <scene sceneID="Cd6-cI-2P8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zv0-ke-VcG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="all_recipe_board" automaticallyAdjustsScrollViewInsets="NO" id="zv0-ke-VcG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Recipe" image="second" id="E7T-89-nGZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7HX-ht-6aL">
