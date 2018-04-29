@@ -88,8 +88,9 @@ public class DataManager {
     // Delete a file
     static func delete (_ fileName:String) {
         let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory: false)
-        
+        print("want to delete \(fileName)")
         if FileManager.default.fileExists(atPath: url.path) {
+            print("file exists")
             do {
                 try FileManager.default.removeItem(at: url)
             }catch{
