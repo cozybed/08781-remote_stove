@@ -16,13 +16,13 @@ class RecipeDetialViewController: UIViewController {
     
     @IBOutlet weak var stageTextView: UITextView!
     
-    
     @IBOutlet weak var descLabel: UITextView!
     
+    /*
     @IBAction func testSave(_ sender: Any) {
         
         //recipe_arr
-        DataManager.save (recipe_arr[0], with: "testRecipie.log")
+        //DataManager.save (recipe_arr[0], with: "testRecipie.log")
         
         var all_data = DataManager.loadAll( RecipeItem.self)
         print (all_data)
@@ -34,7 +34,27 @@ class RecipeDetialViewController: UIViewController {
         
         descLabel.text  = blah
         
+    }*/
+    
+    @IBAction func deleteRecipeButtonClicked(_ sender: Any) {
+       
+        var cur_recipe = recipe_arr[myIndex]
+        
+        DataManager.delete(cur_recipe.name)
+        recipe_arr.remove(at: myIndex)
+        myIndex = 0
+        
+        print (recipe_arr.count)
+        
+        /*
+        let next:UIViewController = (self.storyboard?.instantiateViewController(withIdentifier: "all_recipe_board"))!
+        
+        self.present(next, animated: true, completion: nil)
+        
+        print ("Deleted: ")
+        print (cur_recipe.name)*/
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

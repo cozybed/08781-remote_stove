@@ -46,7 +46,7 @@ extension AuthViewController {
                     print ("Success!!!")
                     self.authText.text = "Connecting to Stove Knob.."
                     let next:UIViewController = (self.storyboard?.instantiateViewController(withIdentifier: "TabBarControllerID"))!
-                    //self.navigationController?.pushViewController(next, animated: true)
+                
                     self.present(next, animated: true, completion: nil)
                     
                     

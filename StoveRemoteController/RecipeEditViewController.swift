@@ -37,8 +37,8 @@ class RecipeEditViewController: UIViewController {
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RecipeEditViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
     }
+    
 //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        
 //    }
