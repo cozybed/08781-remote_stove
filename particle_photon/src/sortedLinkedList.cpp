@@ -48,7 +48,7 @@ void sortedLinkedList::add(long time, int degree)
     }
 }
 
-void sortedLinkedList::deleteFront()
+bool sortedLinkedList::deleteFront()
 {
     if (this->head != nullptr)
     {
@@ -56,7 +56,17 @@ void sortedLinkedList::deleteFront()
         this->head = this->head->next;
         delete temp;
         this->length--;
+        return true;
     }
+    else
+    {
+        return false;
+    }
+}
+
+void sortedLinkedList::deleteAll()
+{
+    while (this->deleteFront());
 }
 
 int sortedLinkedList::getFront()
