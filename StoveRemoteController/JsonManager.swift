@@ -39,7 +39,8 @@ public class DataManager {
     
     
     // Load any kind of codable objects
-    static func load <T:Decodable> (_ fileName:String, with type:T.Type) -> T {
+    static func load <T:Decodable> (_ fileName:String, with type:T.Type) -> T? {
+        print(fileName)
         let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory: false)
         if !FileManager.default.fileExists(atPath: url.path) {
             fatalError("File not found at path \(url.path)")
@@ -48,9 +49,11 @@ public class DataManager {
         if let data = FileManager.default.contents(atPath: url.path) {
             do {
                 let model = try JSONDecoder().decode(type, from: data)
+                print("format correct\(fileName)")
                 return model
             }catch{
-                fatalError(error.localizedDescription)
+                return nil
+//                fatalError(error.localizedDescription)
             }
             
         }else{
@@ -69,7 +72,11 @@ public class DataManager {
             var modelObjects = [T]()
             
             for fileName in files {
-                modelObjects.append(load(fileName, with: type))
+                let load_item: T? = load(fileName, with: type)
+                if load_item != nil {
+                    modelObjects.append(load_item!)
+                }
+                
             }
             
             return modelObjects

@@ -8,7 +8,7 @@
 
 import UIKit
 
-var recipe_arr_str = [""]
+var recipe_arr_str = [String]()
 
 let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[], description:"3 Tomatos\n 1 can of tomato sause\n 1 onion\n")
 
@@ -44,27 +44,40 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        print("recipe view will appear")
+        recipe_arr = DataManager.loadAll(RecipeItem.self)
+        recipe_arr_str.removeAll()
+        for recipe in recipe_arr {
+            recipe_arr_str.append(recipe.name)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("Loaded recipe view controller.")
-        
-        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
-        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
-        let steps = [step1, step2]
-        let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:steps, description:"3 Tomatos\n 1 can of tomato sause\n 1 onion\n")
-        let recipe2 = RecipeItem(name:"Ramen", id: UUID.init(), steps:steps, description: "water 300cc bring to boil.")
-        let recipe3 = RecipeItem(name:"Hard Boiled Eggs", id: UUID.init(), steps:steps, description: "8 mins")
-        
-        
-        recipe_arr = [recipe1, recipe2, recipe3]
-        recipe_arr_str = ["Tomato Soup", "Ramen", "Hard Boiled Eggs"]
-        
-        
-        
-        print (recipe1)
+//
+//        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
+//        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
+//        let steps = [step1, step2]
+//        let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:steps, description:"3 Tomatos\n 1 can of tomato sause\n 1 onion\n")
+//        let recipe2 = RecipeItem(name:"Ramen", id: UUID.init(), steps:steps, description: "water 300cc bring to boil.")
+//        let recipe3 = RecipeItem(name:"Hard Boiled Eggs", id: UUID.init(), steps:steps, description: "8 mins")
+//
+//
+//        recipe_arr = [recipe1, recipe2, recipe3]
+//
+//        recipe_arr = DataManager.loadAll(RecipeItem.self)
+//
+//        for recipe in recipe_arr {
+//            recipe_arr_str.append(recipe.name)
+//        }
+////        recipe_arr_str = ["Tomato Soup", "Ramen", "Hard Boiled Eggs"]
+//
+//
+//
+//        print (recipe1)
 
     
     

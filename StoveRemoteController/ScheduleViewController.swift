@@ -97,7 +97,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @IBAction func popUpSaveItemAction(_ sender: Any) {
         
         let recipeItem = RecipeItem(name: inputNameField.text!, id: UUID.init(), steps: self.stepList, description: descriptionField.text!)
-        DataManager.save (stepList, with: recipeItem.id.uuidString)
+        DataManager.save (recipeItem, with: recipeItem.id.uuidString)
         popDown()
     }
     @IBAction func saveRecipeAction(_ sender: Any) {
