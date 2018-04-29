@@ -38,7 +38,7 @@ class RecipeDetialViewController: UIViewController {
     
     @IBAction func deleteRecipeButtonClicked(_ sender: Any) {
        
-        var cur_recipe = recipe_arr[myIndex]
+        let cur_recipe = recipe_arr[myIndex]
         
         
         print ("Current index is:")
@@ -60,7 +60,7 @@ class RecipeDetialViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        var cur_recipe = recipe_arr[myIndex]
+        let cur_recipe = recipe_arr[myIndex]
         recipeTitleLabel.text = cur_recipe.name
         var steps_str = ""
         
