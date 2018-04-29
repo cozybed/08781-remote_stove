@@ -14,6 +14,8 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var durationField: UITextField!
     
+    @IBOutlet weak var durationSecField: UITextField!
+    
     @IBOutlet weak var stageTextField: UITextView!
     var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
     var stepList = [RecipeItem.StepItem]()
@@ -31,11 +33,14 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     @IBAction func addStageClicked(_ sender: Any) {
         
-        let duration: String = durationField.text!
+        let duration_min: String = durationField.text!
+        let duration_sec: String = durationSecField.text!
         var txt : String  = stageTextField.text
-        txt += "\nLevel:" + selected + " for " + duration + " mins. \n"
+        txt += "\nLevel " + selected + " for " + duration_min + " mins " + duration_sec + " secs\n"
         stageTextField.text = txt
-        let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: Int(duration)!)
+        let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
+        
+        let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
     }
     
@@ -84,22 +89,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     @IBOutlet var popUpView: UIView!
 
@@ -117,6 +106,8 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
 //        self.levelField.delegate = self
         self.durationField.text = "1"
         self.durationField.delegate = self
+        self.durationSecField.text = "0"
+        self.durationSecField.delegate = self
         self.levelField.delegate = self
         self.blurEffect = self.blurView.effect
         self.blurView.alpha = 0

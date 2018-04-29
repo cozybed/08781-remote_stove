@@ -36,8 +36,7 @@ public class DataManager {
         }
         
     }
-    
-    
+
     // Load any kind of codable objects
     static func load <T:Decodable> (_ fileName:String, with type:T.Type) -> T? {
         print(fileName)
@@ -98,7 +97,6 @@ public class DataManager {
             }
         }
     }
-    
-    
+
     
 }
