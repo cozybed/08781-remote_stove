@@ -35,9 +35,10 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         var txt : String  = stageTextField.text
         txt += "\nLevel:" + selected + " for " + duration + " mins."
         stageTextField.text = txt
-        
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: Int(duration)!)
         self.stepList.append(step)
+        
+        
     }
     
     
@@ -48,8 +49,10 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
 //        self.present(vc, animated: true, completion: nil)
 //        self.presentingViewController(vc, animated: true, completion: nil)
         globalStepList = self.stepList
-        self.tabBarController?.selectedIndex = 0;
         startSchedule = true
+        self.stageTextField.text = ""
+        self.tabBarController?.selectedIndex = 0;
+        
         
     }
     
@@ -83,12 +86,18 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         view.addGestureRecognizer(swipeUp)
 
+        
+        stageTextField.isEditable = false
     }
 
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
     }
+    @IBOutlet weak var descriptionField: UITextField!
     @IBAction func popUpSaveItemAction(_ sender: Any) {
+        
+        let recipeItem = RecipeItem(name: inputNameField.text!, id: UUID.init(), steps: self.stepList, description: descriptionField.text!)
+        DataManager.save (stepList, with: recipeItem.id.uuidString)
         popDown()
     }
     @IBAction func saveRecipeAction(_ sender: Any) {

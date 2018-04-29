@@ -43,6 +43,7 @@ class FirstViewController: UIViewController {
         if startSchedule {
             self.stepList = globalStepList
             drawProgress()
+            startSchedule = false
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.tickDown)), userInfo: nil, repeats: true)
         }
         
