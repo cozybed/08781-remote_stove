@@ -13,7 +13,6 @@ var recipe_arr_str = [String]()
 let recipe1 = RecipeItem(name:"Tomato Soup", id: UUID.init(), steps:[], description:"3 Tomatos\n 1 can of tomato sause\n 1 onion\n")
 
 var recipe_arr = [recipe1]
-
 var myIndex = 0
 
 class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
