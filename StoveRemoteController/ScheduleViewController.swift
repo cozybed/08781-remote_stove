@@ -48,7 +48,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
         
-        
         self.steps_txt_list.append(new_txt)
         self.myTableView.reloadData()
         print("reload")
@@ -144,7 +143,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         myTableView.dataSource = self
         
 //        // 分隔線的樣式
-//        myTableView.separatorStyle = .singleLine
+        //myTableView.separatorStyle = .singleLine
 //
 //        // 分隔線的間距 四個數值分別代表 上、左、下、右 的間距
 //        myTableView.separatorInset =
@@ -160,7 +159,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("iahve \(self.steps_txt_list.count)")
         return self.steps_txt_list.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,13 +168,10 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell  = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        
-        //            // 顯示的內容
+        cell?.backgroundColor =  UIColor(red:0.84, green:0.76, blue:0.76, alpha:1.0)
+    
+        cell?.textLabel?.text = self.steps_txt_list[indexPath.row]
 
-        let hhhhh = self.steps_txt_list[indexPath.row]
-        cell?.textLabel?.text = hhhhh
-        
-        
         return cell!
     }
     
