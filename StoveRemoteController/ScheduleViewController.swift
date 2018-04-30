@@ -56,11 +56,19 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
     }
     
+    @IBAction func cancelSchedule(_ sender: Any) {
+        popDown2()
+    }
     @IBAction func goStartSchedule(_ sender: Any) {
         globalStepList = self.stepList
         startSchedule = true
         self.stageTextField.text = ""
         self.tabBarController?.selectedIndex = 0;
+        
+        
+        var x = self.datePicker.date
+        
+        
         popDown2()
     }
     
