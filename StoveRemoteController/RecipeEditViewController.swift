@@ -10,13 +10,27 @@ import UIKit
 
 class RecipeEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
+    var stepList = [RecipeItem.StepItem]()
+
+    
     @IBOutlet weak var recipeNameField: UITextField!
     @IBOutlet weak var recipeDescriptionField: UITextView!
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    var stepList = [RecipeItem.StepItem]()
+    @IBOutlet weak var levelField: UIPickerView!
+    
+    @IBOutlet weak var durationMinField: UITextField!
+    
+    @IBOutlet weak var durationSecField: UITextField!
+    
+    @IBAction func addStageClicked(_ sender: Any) {
+    }
+    
+    @IBAction func saveEditClicked(_ sender: Any) {
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
