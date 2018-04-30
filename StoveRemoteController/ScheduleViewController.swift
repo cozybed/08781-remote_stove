@@ -47,7 +47,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
         
-        self.steps_txt_list.append(new_txt)
+        
         self.myTableView.reloadData()
         print("reload")
         
@@ -156,7 +156,8 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.steps_txt_list.count
+        
+        return self.stepList.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -165,10 +166,12 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell  = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        // display on cell
+        let cellText = "level \(self.stepList[indexPath.row].level) for \(self.stepList[indexPath.row].timeInSeconds) seconds"
+        cell?.textLabel?.text = cellText
         cell?.backgroundColor =  UIColor(red:0.84, green:0.76, blue:0.76, alpha:1.0)
-    
-        cell?.textLabel?.text = self.steps_txt_list[indexPath.row]
-
+        
         return cell!
     }
     
