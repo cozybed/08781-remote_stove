@@ -29,8 +29,8 @@ class RecipeDetialViewController: UIViewController {
        
         let cur_recipe = recipe_arr[myIndex]
         DataManager.delete(cur_recipe.id.uuidString)
-        let next:UIViewController = (self.storyboard?.instantiateViewController(withIdentifier: "all_recipe_board"))!
-        self.present(next, animated: true, completion: nil)
+        
+        
     }
     
     override func viewDidLoad() {
