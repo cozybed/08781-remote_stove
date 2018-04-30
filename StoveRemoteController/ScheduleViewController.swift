@@ -37,26 +37,16 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         let duration_min: String = durationField.text!
         let duration_sec: String = durationSecField.text!
-        
-        
-
-        let new_txt = "Level " + selected + " for " + duration_min + " mins " + duration_sec + " secs. "
-        
-        
+    
         let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
-        
-        
         self.myTableView.reloadData()
-        print("reload")
-        
     }
     
     
     
     @IBAction func StartSchedule(_ sender: Any) {
-
         popUp2()
         
     }
@@ -133,7 +123,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         myTableView.register(
             UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        // 設置委任對象
         myTableView.delegate = self
         myTableView.dataSource = self
         

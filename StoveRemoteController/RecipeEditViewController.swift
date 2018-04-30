@@ -8,11 +8,12 @@
 
 import UIKit
 
-class RecipeEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class RecipeEditViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource  {
     
     var stepList = [RecipeItem.StepItem]()
+    var selected : String = "1"
+    var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
 
-    
     @IBOutlet weak var recipeNameField: UITextField!
     @IBOutlet weak var recipeDescriptionField: UITextView!
     
@@ -26,9 +27,32 @@ class RecipeEditViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var durationSecField: UITextField!
     
     @IBAction func addStageClicked(_ sender: Any) {
+        let duration_min: String = durationMinField.text!
+        let duration_sec: String = durationSecField.text!
+        
+        let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
+        let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
+        self.stepList.append(step)
+        self.tableView.reloadData()
+
     }
     
     @IBAction func saveEditClicked(_ sender: Any) {
+        if (myIndex == recipe_arr.count){
+            let cur_recipe = RecipeItem(name: recipeNameField.text!, id: UUID.init(), steps: self.stepList, description: recipeDescriptionField.text!)
+            DataManager.save (cur_recipe, with: cur_recipe.id.uuidString)
+            
+
+        }else{
+            
+            var cur_recipe = recipe_arr [myIndex]
+            cur_recipe.steps = self.stepList
+            cur_recipe.name = recipeNameField.text!
+            cur_recipe.description = recipeDescriptionField.text!
+            DataManager.save (cur_recipe, with: cur_recipe.id.uuidString)
+        }
+        
+        
     }
     
     
@@ -46,11 +70,15 @@ class RecipeEditViewController: UIViewController, UITableViewDelegate, UITableVi
             
             let cur_recipe = recipe_arr [myIndex]
             self.stepList = cur_recipe.steps
-            
             recipeNameField.text = cur_recipe.name
             recipeDescriptionField.text = cur_recipe.description
-            
         }
+        
+        
+        self.durationMinField.text = "1"
+        self.durationSecField.text = "0"
+        self.levelField.delegate = self
+
         
         tableView.register(
             UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -109,9 +137,20 @@ class RecipeEditViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        selected = pickerData[row]
+        return selected
+    }
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 
 }

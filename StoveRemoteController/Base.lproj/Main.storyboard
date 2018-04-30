@@ -366,8 +366,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description of the recipe goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SaO-KC-kYd">
-                                <rect key="frame" x="48" y="207" width="320" height="102"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Description of the recipe goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SaO-KC-kYd">
+                                <rect key="frame" x="48" y="207" width="330" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -472,7 +472,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="## Input your recipe Description Here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E36-0y-FNi">
-                                <rect key="frame" x="60" y="174" width="306" height="93"/>
+                                <rect key="frame" x="47" y="174" width="319" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -587,6 +587,7 @@
                                 <connections>
                                     <action selector="addStageClicked:" destination="Vce-Zs-uey" eventType="touchUpInside" id="me8-Ns-ceP"/>
                                     <action selector="saveEditClicked:" destination="EPb-HH-ZTa" eventType="touchUpInside" id="ljj-KC-2F4"/>
+                                    <segue destination="fbO-1Z-wX5" kind="show" id="9p8-0D-qP5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -742,6 +743,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uXf-YC-Cew"/>
-        <segue reference="d2J-rR-cLd"/>
+        <segue reference="9p8-0D-qP5"/>
     </inferredMetricsTieBreakers>
 </document>
