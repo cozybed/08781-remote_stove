@@ -594,6 +594,7 @@
                     <connections>
                         <outlet property="recipeDescriptionField" destination="E36-0y-FNi" id="3af-vv-lkq"/>
                         <outlet property="recipeNameField" destination="cls-9V-fDS" id="80Z-UX-MlL"/>
+                        <outlet property="tableView" destination="c7h-ec-Xya" id="Lsq-kx-F5Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9k-zC-9k7" userLabel="First Responder" sceneMemberID="firstResponder"/>

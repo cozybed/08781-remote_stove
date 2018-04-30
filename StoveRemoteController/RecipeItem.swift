@@ -42,7 +42,7 @@ struct RecipeItem : Codable {
         self.description = description
     }
     
-        
+    
     
     func to_string () -> String {
         

@@ -103,6 +103,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var inputNameField: UITextField!
     var blurEffect: UIVisualEffect!
+    
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
