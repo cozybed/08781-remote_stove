@@ -45,6 +45,7 @@ class RecipeDetialViewController: UIViewController {
             steps_str += s.to_string()
         }
         stageTextView.text = steps_str
+        
         descLabel.text = cur_recipe.description
     }
 
