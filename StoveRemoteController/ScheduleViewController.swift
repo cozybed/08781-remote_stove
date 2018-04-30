@@ -16,11 +16,13 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var durationSecField: UITextField!
     
-    @IBOutlet weak var stageTextField: UITextView!
+    @IBOutlet var startScheduleView: UIView!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
     var stepList = [RecipeItem.StepItem]()
     var selected : String = "1"
-    var steps_txt_list = [String]()
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -37,27 +39,22 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         let duration_sec: String = durationSecField.text!
         
         
-//        var txt : String  = stageTextField.text
+
         let new_txt = "Level " + selected + " for " + duration_min + " mins " + duration_sec + " secs. "
         
-//        txt += new_txt
-        
-//        stageTextField.text = txt
         
         let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
         
         
-        self.steps_txt_list.append(new_txt)
         self.myTableView.reloadData()
         print("reload")
         
     }
     
     
-    @IBOutlet var startScheduleView: UIView!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBAction func StartSchedule(_ sender: Any) {
 
         popUp2()
@@ -70,7 +67,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @IBAction func goStartSchedule(_ sender: Any) {
         globalStepList = self.stepList
         startSchedule = true
-        self.stageTextField.text = ""
         self.tabBarController?.selectedIndex = 0;
         
         
@@ -144,7 +140,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         myTableView.dataSource = self
         
 //        // 分隔線的樣式
-//        myTableView.separatorStyle = .singleLine
+        myTableView.separatorStyle = .singleLine
 //
 //        // 分隔線的間距 四個數值分別代表 上、左、下、右 的間距
 //        myTableView.separatorInset =
@@ -160,21 +156,20 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("iahve \(self.steps_txt_list.count)")
-        return self.steps_txt_list.count
+        
+        return self.stepList.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    // 必須實作的方法：每個 cell 要顯示的內容
+    // contents of the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell  = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        //            // 顯示的內容
-
-        let hhhhh = self.steps_txt_list[indexPath.row]
-        cell?.textLabel?.text = hhhhh
+        // display on cell
+        let cellText = "level \(self.stepList[indexPath.row].level) for \(self.stepList[indexPath.row].timeInSeconds) seconds"
+        cell?.textLabel?.text = cellText
         
         
         return cell!
@@ -186,35 +181,14 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            self.steps_txt_list.remove(at: indexPath.section)
+            self.stepList.remove(at: indexPath.section)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .middle)
             tableView.endUpdates()
         }
     }
-    
-//    func tableView(_ tableView: UITableView,
-//                   titleForHeaderInSection section: Int) -> String? {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .medium
-//        dateFormatter.timeStyle = .none
-//        dateFormatter.locale = Locale(identifier: "en_US")
-//        let title = dateFormatter.string(from: globalStartDate[section])
-//        return title
-//    }
-    
-    
-    
-    
-    
-    
-
 
     
-
-    @objc func dismissKeyboard(){
-        self.view.endEditing(true)
-    }
     
     @IBOutlet weak var descriptionViewField: UITextView!
     
@@ -272,5 +246,8 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         selected = pickerData[row]
         return pickerData[row]
+    }
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 }
