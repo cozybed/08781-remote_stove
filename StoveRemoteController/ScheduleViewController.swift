@@ -35,11 +35,13 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         let duration_min: String = durationField.text!
         let duration_sec: String = durationSecField.text!
-        var txt : String  = stageTextField.text
-        txt += "\nLevel " + selected + " for " + duration_min + " mins " + duration_sec + " secs\n"
-        stageTextField.text = txt
-        let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
         
+        
+        var txt : String  = stageTextField.text
+        txt += "\nLevel " + selected + " for " + duration_min + " mins " + duration_sec + " secs. \n"
+        stageTextField.text = txt
+        
+        let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
     }
