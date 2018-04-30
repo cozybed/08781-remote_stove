@@ -17,41 +17,27 @@ class RecipeDetialViewController: UIViewController {
     
     @IBOutlet weak var descLabel: UITextView!
     
-    /*
-    func testSave(_ sender: Any) {
-        
-        //DataManager.save (recipe_arr[0], with: "testRecipie.log")
-        var all_data = DataManager.loadAll( RecipeItem.self)
-        print (all_data)
-    }*/
     
     @IBAction func deleteRecipeButtonClicked(_ sender: Any) {
        
         let cur_recipe = recipe_arr[myIndex]
-        
-        
-        print ("Current index is:")
-        print (myIndex)
         DataManager.delete(cur_recipe.id.uuidString)
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
         
         let cur_recipe = recipe_arr[myIndex]
         recipeTitleLabel.text = cur_recipe.name
         var steps_str = ""
         
         for s in cur_recipe.steps {
-            steps_str += s.to_string()
+            steps_str += s.to_string() + "\n"
         }
         
         stageTextView.text = steps_str
-        
         if (cur_recipe.description.isEmpty) {
             descLabel.text = "(user has not yet entered any description..)"
         }else{
