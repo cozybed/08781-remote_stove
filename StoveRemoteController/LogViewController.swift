@@ -68,31 +68,9 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     // 必須實作的方法：每個 cell 要顯示的內容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            // 取得 tableView 目前使用的 cell
-//            let cell =
-//                tableView.dequeueReusableCellWithIdentifier(
-//                    "Cell", forIndexPath: indexPath) as
-//            UITableViewCell
-//
             
             let cell  = tableView.dequeueReusableCell(withIdentifier: "Cell")
-            
-            
-//            c
-//            // 設置 Accessory 按鈕樣式
-//            if indexPath.section == 1 {
-//                if indexPath.row == 0 {
-//                    cell.accessoryType = .Checkmark
-//                } else if indexPath.row == 1 {
-//                    cell.accessoryType = .DetailButton
-//                } else if indexPath.row == 2 {
-//                    cell.accessoryType =
-//                        .DetailDisclosureButton
-//                } else if indexPath.row == 3 {
-//                    cell.accessoryType = .DisclosureIndicator
-//                }
-//            }
-//
+        
 //            // 顯示的內容
             print("\(indexPath.row)\(indexPath.section)")
             let step = globalRecipe[indexPath.section][indexPath.row]
