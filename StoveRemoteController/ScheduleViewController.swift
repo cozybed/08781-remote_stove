@@ -67,11 +67,8 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @IBAction func goStartSchedule(_ sender: Any) {
         globalStepList = self.stepList
         startSchedule = true
-        self.tabBarController?.selectedIndex = 0;
         
-        
-        
-        
+        self.tabBarController?.selectedIndex = 0
         popDown2()
     }
     
