@@ -34,6 +34,9 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             height: fullScreenSize.height - 20),
                                       style: .grouped)
 
+        
+        
+        // cited from https://itisjoe.gitbooks.io/swiftgo/content/uikit/uitableview.html
         // 註冊 cell
         myTableView.register(
             UITableViewCell.self, forCellReuseIdentifier: "Cell")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate,UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var levelField: UIPickerView!
     
@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
     var stepList = [RecipeItem.StepItem]()
     var selected : String = "1"
-    var steps_txt_list = ["bsdbbsdbsb"]
+    var steps_txt_list = [String]()
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -37,12 +37,12 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         let duration_sec: String = durationSecField.text!
         
         
-        var txt : String  = stageTextField.text
-        let new_txt = "\nLevel " + selected + " for " + duration_min + " mins " + duration_sec + " secs. \n"
+//        var txt : String  = stageTextField.text
+        let new_txt = "Level " + selected + " for " + duration_min + " mins " + duration_sec + " secs. "
         
-        txt += new_txt
+//        txt += new_txt
         
-        stageTextField.text = txt
+//        stageTextField.text = txt
         
         let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
@@ -50,6 +50,9 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         
         self.steps_txt_list.append(new_txt)
+        self.myTableView.reloadData()
+        print("reload")
+        
     }
     
     
@@ -71,7 +74,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         self.tabBarController?.selectedIndex = 0;
         
         
-        var x = self.datePicker.date
         
         
         popDown2()
@@ -108,7 +110,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var inputNameField: UITextField!
     var blurEffect: UIVisualEffect!
-
+    @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -130,20 +132,80 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         view.addGestureRecognizer(swipeUp)
 
         
-        stageTextField.isEditable = false
+//        stageTextField.isEditable = false
         
         
         //create table view
-        let fullScreenSize = UIScreen.main.bounds.size
-        let myTableView = UITableView(frame: CGRect(
-            x: 0, y: 20,
-            width: fullScreenSize.width,
-            height: fullScreenSize.height - 20),
-                                      style: .grouped)
+        myTableView.register(
+            UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        // 設置委任對象
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        
+//        // 分隔線的樣式
+//        myTableView.separatorStyle = .singleLine
+//
+//        // 分隔線的間距 四個數值分別代表 上、左、下、右 的間距
+//        myTableView.separatorInset =
+//            UIEdgeInsetsMake(0, 20, 0, 20)
+//
+//        // 是否可以點選 cell
+//        myTableView.allowsSelection = true
+//
+//        // 是否可以多選 cell
+//        myTableView.allowsMultipleSelection = false
+       
 
         
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("iahve \(self.steps_txt_list.count)")
+        return self.steps_txt_list.count
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    // 必須實作的方法：每個 cell 要顯示的內容
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        //            // 顯示的內容
+
+        let hhhhh = self.steps_txt_list[indexPath.row]
+        cell?.textLabel?.text = hhhhh
+        
+        
+        return cell!
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            self.steps_txt_list.remove(at: indexPath.section)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .middle)
+            tableView.endUpdates()
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView,
+//                   titleForHeaderInSection section: Int) -> String? {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .none
+//        dateFormatter.locale = Locale(identifier: "en_US")
+//        let title = dateFormatter.string(from: globalStartDate[section])
+//        return title
+//    }
+    
+    
+    
+    
     
     
 
