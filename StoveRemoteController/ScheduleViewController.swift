@@ -168,7 +168,10 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         let cell  = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         // display on cell
-        let cellText = "level \(self.stepList[indexPath.row].level) for \(self.stepList[indexPath.row].timeInSeconds) seconds"
+        let time_in_sec_tot = self.stepList[indexPath.row].timeInSeconds
+        let time_in_min = time_in_sec_tot / 60
+        let time_in_sec = time_in_sec_tot % 60
+        let cellText = "level \(self.stepList[indexPath.row].level) for \(time_in_min) mins and \(time_in_sec) seconds"
         cell?.textLabel?.text = cellText
         cell?.backgroundColor =  UIColor(red:0.84, green:0.76, blue:0.76, alpha:1.0)
         
