@@ -44,9 +44,14 @@ class RecipeDetialViewController: UIViewController {
         for s in cur_recipe.steps {
             steps_str += s.to_string()
         }
+        
         stageTextView.text = steps_str
         
-        descLabel.text = cur_recipe.description
+        if (cur_recipe.description.isEmpty) {
+            descLabel.text = "(user has not yet entered any description..)"
+        }else{
+            descLabel.text = cur_recipe.description
+        }
     }
 
     override func didReceiveMemoryWarning() {
