@@ -20,6 +20,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
     var stepList = [RecipeItem.StepItem]()
     var selected : String = "1"
+    var steps_txt_list = ["bsdbbsdbsb"]
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -30,7 +31,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
     
-    
     @IBAction func addStageClicked(_ sender: Any) {
         
         let duration_min: String = durationField.text!
@@ -38,22 +38,25 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         
         
         var txt : String  = stageTextField.text
-        txt += "\nLevel " + selected + " for " + duration_min + " mins " + duration_sec + " secs. \n"
+        let new_txt = "\nLevel " + selected + " for " + duration_min + " mins " + duration_sec + " secs. \n"
+        
+        txt += new_txt
+        
         stageTextField.text = txt
         
         let total_duration = Int(duration_min)! * 60 + Int(duration_sec)!
         let step = RecipeItem.StepItem(level: Int(selected)!, timeInSeconds: total_duration)
         self.stepList.append(step)
+        
+        
+        self.steps_txt_list.append(new_txt)
     }
     
     
     @IBOutlet var startScheduleView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBAction func StartSchedule(_ sender: Any) {
-//        let sb = UIStoryboard(name:"Main", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "FirstViewID") as UIViewController
-//        self.present(vc, animated: true, completion: nil)
-//        self.presentingViewController(vc, animated: true, completion: nil)
+
         popUp2()
         
     }
@@ -111,9 +114,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
         // Do any additional setup after loading the view.
         print ("Loaded schedule view controller.")
-//        self.durationField.delegate = self
-//        self.levelField.delegate = self
-//        self.levelField.delegate = self
         self.durationField.text = "1"
         self.durationField.delegate = self
         self.durationSecField.text = "0"
@@ -131,7 +131,24 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
 
         
         stageTextField.isEditable = false
+        
+        
+        //create table view
+        let fullScreenSize = UIScreen.main.bounds.size
+        let myTableView = UITableView(frame: CGRect(
+            x: 0, y: 20,
+            width: fullScreenSize.width,
+            height: fullScreenSize.height - 20),
+                                      style: .grouped)
+        
+
+        
     }
+    
+    
+
+
+    
 
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
@@ -182,16 +199,6 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
