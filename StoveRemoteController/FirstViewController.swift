@@ -41,8 +41,8 @@ class FirstViewController: UIViewController {
         return Float(self.rotation) * (180/Float.pi)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if startSchedule {
+    override func viewWillAppear(_ animated: Bool) {
+        if startSchedule && self.stepList.count != 0{
             self.stepList = globalStepList
             drawProgress()
             startSchedule = false
@@ -103,6 +103,8 @@ class FirstViewController: UIViewController {
         self.stepList = stepList;
     }
     
+    
+    
     func drawProgress(){
         for index in 0..<self.progressList.count{
             self.progressList[index]?.removeFromSuperview()
@@ -151,7 +153,7 @@ class FirstViewController: UIViewController {
             }
             drawProgress()
         }
-        print("asdf")
+        
     }
     
 

@@ -65,10 +65,12 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         popDown2()
     }
     @IBAction func goStartSchedule(_ sender: Any) {
-        globalStepList = self.stepList
-        startSchedule = true
-        
-        self.tabBarController?.selectedIndex = 0
+//        globalStepList = self.stepList
+//        startSchedule = true
+        globalRecipe.append(self.stepList)
+        globalStartDate.append(self.datePicker.date)
+        self.stepList.removeAll()
+        self.tabBarController?.selectedIndex = 1
         popDown2()
     }
     

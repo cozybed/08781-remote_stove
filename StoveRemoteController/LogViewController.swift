@@ -9,31 +9,63 @@
 import UIKit
 var globalRecipe = [[RecipeItem.StepItem]]()
 var globalStartDate = [Date]()
+var scheduleTimer = [Timer]()
 class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
+    var myTableView: UITableView = UITableView()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.myTableView.reloadData()
+        for aTimer in scheduleTimer {
+            aTimer.invalidate()
+        }
+        scheduleTimer.removeAll()
+        for index in 0..<globalRecipe.count {
+            
+            let aDate = globalStartDate[index].timeIntervalSinceReferenceDate
+            let currentDate = Date().timeIntervalSinceReferenceDate
+            let interval = aDate - currentDate
+            if interval < 0 {
+                continue
+            }
+            let steps = globalRecipe[index]
+            //todo: check for start time
+            
+            let aTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector:#selector(startAnSchedule(sender:)), userInfo: steps, repeats:false)
+            scheduleTimer.append(aTimer)
+        }
+    }
+    
+    @objc func startAnSchedule(sender: Timer){
+        print("add a schedulre")
+        globalStepList = sender.userInfo as! [RecipeItem.StepItem]
+        startSchedule = true
+        self.tabBarController?.selectedIndex = 0
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
-        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
-        let steps = [step1, step2]
-        globalRecipe.append(steps)
-        globalRecipe.append(steps)
-        globalRecipe.append(steps)
-        globalRecipe.append(steps)
-        globalStartDate.append(Date())
-        globalStartDate.append(Date())
-        globalStartDate.append(Date())
-        globalStartDate.append(Date())
+//        let step1  = RecipeItem.StepItem(level:1,timeInSeconds:10)
+//        let step2  = RecipeItem.StepItem(level:3,timeInSeconds:20)
+//        let steps = [step1, step2]
+//        globalRecipe.append(steps)
+//        globalRecipe.append(steps)
+//        globalRecipe.append(steps)
+//        globalRecipe.append(steps)
+//        globalStartDate.append(Date())
+//        globalStartDate.append(Date())
+//        globalStartDate.append(Date())
+//        globalStartDate.append(Date())
         print ("Loaded log view controller.")
         
         //create table view
         let fullScreenSize = UIScreen.main.bounds.size
-        let myTableView = UITableView(frame: CGRect(
+        self.myTableView = UITableView(frame: CGRect(
             x: 0, y: 20,
             width: fullScreenSize.width,
             height: fullScreenSize.height - 20),
                                       style: .grouped)
 
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LogViewController.refreshTable), userInfo: nil, repeats: true)
         
         
         // cited from https://itisjoe.gitbooks.io/swiftgo/content/uikit/uitableview.html
@@ -62,6 +94,11 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         self.view.addSubview(myTableView)
         
     }
+    
+    @objc func refreshTable(){
+        self.myTableView.reloadData()
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return globalRecipe[section].count
@@ -96,15 +133,17 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             tableView.endUpdates()
         }
     }
-    
+
     func tableView(_ tableView: UITableView,
                    titleForHeaderInSection section: Int) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
+        dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "en_US")
         let title = dateFormatter.string(from: globalStartDate[section])
-        return title
+        let remainTime = Int(globalStartDate[section].timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)
+        
+        return title + " \(remainTime) remaining"
     }
     
     override func didReceiveMemoryWarning() {
