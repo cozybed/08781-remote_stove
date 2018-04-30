@@ -87,6 +87,7 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             globalRecipe.remove(at: indexPath.section)
