@@ -22,7 +22,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
     var stepList = [RecipeItem.StepItem]()
-    var selected : String = "1"
+    var selected = "1"
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -247,8 +247,10 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        selected = pickerData[row]
         return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selected = pickerData[row]
     }
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
