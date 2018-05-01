@@ -28,7 +28,7 @@
 		90055490208692A300914852 /* CamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamViewController.swift; sourceTree = "<group>"; };
 		901077B92073879D00100A3C /* RecipeEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEditViewController.swift; sourceTree = "<group>"; };
 		9065262220955E63003E89F8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		90707C502047B3C30009E4A7 /* StoveRemoteController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoveRemoteController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90707C502047B3C30009E4A7 /* StoveGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoveGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90707C532047B3C30009E4A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90707C552047B3C30009E4A7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		90707C572047B3C30009E4A7 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		90707C512047B3C30009E4A7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90707C502047B3C30009E4A7 /* StoveRemoteController.app */,
+				90707C502047B3C30009E4A7 /* StoveGuard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,9 +94,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		90707C4F2047B3C30009E4A7 /* StoveRemoteController */ = {
+		90707C4F2047B3C30009E4A7 /* StoveGuard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90707C642047B3C30009E4A7 /* Build configuration list for PBXNativeTarget "StoveRemoteController" */;
+			buildConfigurationList = 90707C642047B3C30009E4A7 /* Build configuration list for PBXNativeTarget "StoveGuard" */;
 			buildPhases = (
 				90707C4C2047B3C30009E4A7 /* Sources */,
 				90707C4D2047B3C30009E4A7 /* Frameworks */,
@@ -106,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = StoveRemoteController;
+			name = StoveGuard;
 			productName = StoveRemoteController;
-			productReference = 90707C502047B3C30009E4A7 /* StoveRemoteController.app */;
+			productReference = 90707C502047B3C30009E4A7 /* StoveGuard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -127,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 90707C4B2047B3C30009E4A7 /* Build configuration list for PBXProject "StoveRemoteController" */;
+			buildConfigurationList = 90707C4B2047B3C30009E4A7 /* Build configuration list for PBXProject "StoveGuard" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				90707C4F2047B3C30009E4A7 /* StoveRemoteController */,
+				90707C4F2047B3C30009E4A7 /* StoveGuard */,
 			);
 		};
 /* End PBXProject section */
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		90707C4B2047B3C30009E4A7 /* Build configuration list for PBXProject "StoveRemoteController" */ = {
+		90707C4B2047B3C30009E4A7 /* Build configuration list for PBXProject "StoveGuard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90707C622047B3C30009E4A7 /* Debug */,
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		90707C642047B3C30009E4A7 /* Build configuration list for PBXNativeTarget "StoveRemoteController" */ = {
+		90707C642047B3C30009E4A7 /* Build configuration list for PBXNativeTarget "StoveGuard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90707C652047B3C30009E4A7 /* Debug */,
