@@ -15,7 +15,6 @@ var globalStepList = [RecipeItem.StepItem]();
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var stoveImg: UIImageView!
-    @IBOutlet var progressView: UIView!
     
     var direction = "clockwise"
     var location:CGPoint = CGPoint()
@@ -79,11 +78,14 @@ class FirstViewController: UIViewController {
     }
  
     
+    @IBOutlet weak var levelIndicatorLabel: UILabel!
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         var degree = Int(deg) % 360
         if degree < 0 {
             degree += 360
         }
+        let level = degree / 40 + 1
+        levelIndicatorLabel.text = "LEVEL: \(level)"
         print("rotate to \(degree)")
         dataRequestByAngle(param: String(degree), turnAngleTo : "turnAngleTo")
     }
@@ -143,8 +145,15 @@ class FirstViewController: UIViewController {
                 break;
             }
         }
-        
+        if self.stepList.count > 0 {
+            let setDeg = self.stepList[0].level * 40
+            print("auto setup \(setDeg)")
+            self.rotation = CGFloat(setDeg)
+            self.levelIndicatorLabel.text = "LEVEL: \(self.stepList[0].level)"
+            deg = rotate()
+        }
         self.progress = self.progressList.first!
+        
     }
     
     @objc func tickDown()
