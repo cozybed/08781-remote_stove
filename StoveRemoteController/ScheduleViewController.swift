@@ -131,17 +131,12 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         myTableView.delegate = self
         myTableView.dataSource = self
         
-//        // 分隔線的樣式
-        //myTableView.separatorStyle = .singleLine
-//
-//        // 分隔線的間距 四個數值分別代表 上、左、下、右 的間距
+//        myTableView.separatorStyle = .singleLine
 //        myTableView.separatorInset =
 //            UIEdgeInsetsMake(0, 20, 0, 20)
 //
-//        // 是否可以點選 cell
 //        myTableView.allowsSelection = true
 //
-//        // 是否可以多選 cell
 //        myTableView.allowsMultipleSelection = false
        
 
