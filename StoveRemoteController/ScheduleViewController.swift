@@ -132,6 +132,9 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         view.addGestureRecognizer(swipeUp)
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        view.addGestureRecognizer(swipeDown)
 
         
 //        stageTextField.isEditable = false
