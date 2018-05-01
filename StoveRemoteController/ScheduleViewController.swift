@@ -58,13 +58,26 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         self.myTableView.reloadData()
     }
     @IBAction func goStartSchedule(_ sender: Any) {
-//        globalStepList = self.stepList
-//        startSchedule = true
-        globalRecipe.append(self.stepList)
-        globalStartDate.append(self.datePicker.date)
-        self.stepList.removeAll()
-        self.tabBarController?.selectedIndex = 1
-        popDown2()
+
+        if (self.stepList.count == 0){
+            let alert = UIAlertController(title: "Alert", message: "Please at least enter 1 step.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        if (self.datePicker.date <  Date()){
+            let alert = UIAlertController(title: "Alert", message: "Time must be after current date.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            globalRecipe.append(self.stepList)
+            globalStartDate.append(self.datePicker.date)
+            self.stepList.removeAll()
+            self.tabBarController?.selectedIndex = 1
+            popDown2()
+        }
+        
+      
     }
     
     func popUp2() {
@@ -131,17 +144,12 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         myTableView.delegate = self
         myTableView.dataSource = self
         
-//        // 分隔線的樣式
-        //myTableView.separatorStyle = .singleLine
-//
-//        // 分隔線的間距 四個數值分別代表 上、左、下、右 的間距
+//        myTableView.separatorStyle = .singleLine
 //        myTableView.separatorInset =
 //            UIEdgeInsetsMake(0, 20, 0, 20)
 //
-//        // 是否可以點選 cell
 //        myTableView.allowsSelection = true
 //
-//        // 是否可以多選 cell
 //        myTableView.allowsMultipleSelection = false
        
 
