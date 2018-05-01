@@ -102,6 +102,7 @@ class FirstViewController: UIViewController {
         self.rotation = CGFloat(addjust_rotation)
         deg = rotate()
         levelIndicatorLabel.text = "LEVEL: \(level)"
+        degree = level * 40
         print("rotate to \(degree)")
         dataRequestByAngle(param: String(degree), turnAngleTo : "turnAngleTo")
     }
