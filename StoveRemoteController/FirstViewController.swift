@@ -79,7 +79,8 @@ class FirstViewController: UIViewController {
  
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dataRequestByAngle(param: String(deg), turnAngleTo : "turnAngleTo")
+        print("rotate to \(Int(abs(deg)) % 360)")
+        dataRequestByAngle(param: String(Int(abs(deg)) % 360), turnAngleTo : "turnAngleTo")
     }
     
     

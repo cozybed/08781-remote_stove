@@ -23,22 +23,60 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             
             let aDate = globalStartDate[index].timeIntervalSinceReferenceDate
             let currentDate = Date().timeIntervalSinceReferenceDate
-            let interval = aDate - currentDate
-            if interval < 0 {
-                continue
+            var interval = aDate - currentDate
+            if interval < 0{
+                interval = 1
             }
+
             let steps = globalRecipe[index]
             //todo: check for start time
             
-            let aTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector:#selector(startAnSchedule(sender:)), userInfo: steps, repeats:false)
+            let aTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector:#selector(startAnSchedule(sender:)), userInfo: index, repeats:false)
             self.scheduleTimer.append(aTimer)
         }
+    }
+    func dataRequestSchedule(param: String, direction : String) {
+        
+        let urlToRequest = "https://api.particle.io/v1/devices/33001c000347353137323334/\(direction)?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
+        
+        print (urlToRequest)
+        
+        let url4 = URL(string: urlToRequest)!
+        let session4 = URLSession.shared
+        let request = NSMutableURLRequest(url: url4)
+        request.httpMethod = "POST"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        let paramString = "arg=\(param)"
+        request.httpBody = paramString.data(using: String.Encoding.utf8)
+        let task = session4.dataTask(with: request as URLRequest) { (data, response, error) in
+            guard let _: Data = data, let _: URLResponse = response, error == nil else {
+                print("*****error")
+                return
+            }
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("*****This is the data 4: \(String(describing: dataString))") //JSONSerialization
+        }
+        task.resume()
     }
     
     @objc func startAnSchedule(sender: Timer){
         print("add a schedulre")
-        globalStepList = sender.userInfo as! [RecipeItem.StepItem]
+        let sender_index = sender.userInfo as! Int
+        globalStepList = globalRecipe[sender_index]
         startSchedule = true
+        
+        var current_time = Int(Date().timeIntervalSince1970) + 3
+    
+        for step in globalStepList{
+            let params = "\(current_time) \(step.level * 40)"
+            current_time = current_time + step.timeInSeconds
+            print("send schedule")
+            dataRequestSchedule(param: params, direction: "newSchedule")
+        }
+        let params = "\(current_time) 0"
+        dataRequestSchedule(param: params, direction: "newSchedule")
+        globalRecipe.remove(at: sender_index)
+        globalStepList.remove(at: sender_index)
         self.tabBarController?.selectedIndex = 0
     }
     override func viewDidLoad() {
@@ -128,7 +166,8 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         if (editingStyle == .delete) {
             globalRecipe.remove(at: indexPath.section)
             globalStartDate.remove(at: indexPath.section)
-            self.scheduleTimer.remove(at: indexPath.section)
+            let aTimer = self.scheduleTimer.remove(at: indexPath.section)
+            aTimer.invalidate()
             tableView.beginUpdates()
             tableView.deleteSections([indexPath.section], with: .middle)
             tableView.endUpdates()
