@@ -26,6 +26,14 @@ class RecipeDetialViewController: UIViewController {
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
     }
+    
+    @IBAction func startClicked(_ sender: Any) {
+    
+        globalScheduleStepList = recipe_arr[myIndex].steps
+    
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
