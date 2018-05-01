@@ -153,17 +153,13 @@ class FirstViewController: UIViewController {
             }
             drawProgress()
         }
-        
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
+      
     func dataRequestByAngle(param: String, turnAngleTo : String) {
         
         let urlToRequest = "https://api.particle.io/v1/devices/33001c000347353137323334/\(turnAngleTo)?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
