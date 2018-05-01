@@ -144,7 +144,7 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         let title = dateFormatter.string(from: globalStartDate[section])
         let remainTime = Int(globalStartDate[section].timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)
         
-        return title + " \(remainTime) seconds remaining"
+        return title + " \(remainTime) remaining"
     }
     
     override func didReceiveMemoryWarning() {
