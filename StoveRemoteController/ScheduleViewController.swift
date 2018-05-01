@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var pickerData = ["1", "2", "3","4","5", "6", "7", "8", "9"]
+    var pickerData = ["1", "2", "3","4","5", "6", "7", "8"]
     var stepList = [RecipeItem.StepItem]()
     var selected = "1"
     

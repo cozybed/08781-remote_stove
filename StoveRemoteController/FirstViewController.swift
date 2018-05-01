@@ -84,8 +84,10 @@ class FirstViewController: UIViewController {
             degree += 360
         }
         
-        let level = (degree + 20) / 40
-        
+        var level = (degree + 20) / 40
+        if level > 8 {
+            level = 8
+        }
         levelIndicatorLabel.text = "LEVEL: \(level)"
     }
  
@@ -96,8 +98,10 @@ class FirstViewController: UIViewController {
         if degree < 0 {
             degree += 360
         }
-        let level = (degree + 20) / 40
-        
+        var level = (degree + 20) / 40
+        if level > 8{
+            level = 8
+        }
         let addjust_rotation = Float(level) * 40 / 360 * (Float.pi * 2)
         self.rotation = CGFloat(addjust_rotation)
         deg = rotate()
