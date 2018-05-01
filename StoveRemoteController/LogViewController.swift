@@ -28,36 +28,13 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
                 interval = 1
             }
 
-            let steps = globalRecipe[index]
             //todo: check for start time
             
             let aTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector:#selector(startAnSchedule(sender:)), userInfo: index, repeats:false)
             self.scheduleTimer.append(aTimer)
         }
     }
-    func dataRequestSchedule(param: String, direction : String) {
-        
-        let urlToRequest = "https://api.particle.io/v1/devices/33001c000347353137323334/\(direction)?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
-        
-        print (urlToRequest)
-        
-        let url4 = URL(string: urlToRequest)!
-        let session4 = URLSession.shared
-        let request = NSMutableURLRequest(url: url4)
-        request.httpMethod = "POST"
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
-        let paramString = "arg=\(param)"
-        request.httpBody = paramString.data(using: String.Encoding.utf8)
-        let task = session4.dataTask(with: request as URLRequest) { (data, response, error) in
-            guard let _: Data = data, let _: URLResponse = response, error == nil else {
-                print("*****error")
-                return
-            }
-            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("*****This is the data 4: \(String(describing: dataString))") //JSONSerialization
-        }
-        task.resume()
-    }
+    
     
     @objc func startAnSchedule(sender: Timer){
         print("add a schedulre")
@@ -76,7 +53,7 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         let params = "\(current_time) 0"
         dataRequestSchedule(param: params, direction: "newSchedule")
         globalRecipe.remove(at: sender_index)
-        globalStepList.remove(at: sender_index)
+        globalStartDate.remove(at: sender_index)
         self.tabBarController?.selectedIndex = 0
     }
     override func viewDidLoad() {
@@ -189,6 +166,29 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func dataRequestSchedule(param: String, direction : String) {
+        
+        let urlToRequest = "https://api.particle.io/v1/devices/33001c000347353137323334/\(direction)?access_token=30a9c72b4fad3857cd88aeaebdc4e4ce03e8e1c3"
+        
+        print (urlToRequest)
+        
+        let url4 = URL(string: urlToRequest)!
+        let session4 = URLSession.shared
+        let request = NSMutableURLRequest(url: url4)
+        request.httpMethod = "POST"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        let paramString = "arg=\(param)"
+        request.httpBody = paramString.data(using: String.Encoding.utf8)
+        let task = session4.dataTask(with: request as URLRequest) { (data, response, error) in
+            guard let _: Data = data, let _: URLResponse = response, error == nil else {
+                print("*****error")
+                return
+            }
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("*****This is the data 4: \(String(describing: dataString))") //JSONSerialization
+        }
+        task.resume()
     }
 
 

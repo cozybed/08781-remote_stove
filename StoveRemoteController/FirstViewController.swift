@@ -84,7 +84,7 @@ class FirstViewController: UIViewController {
         if degree < 0 {
             degree += 360
         }
-        let level = degree / 40
+        let level = degree / 40 + 1
         levelIndicatorLabel.text = "LEVEL: \(level)"
         print("rotate to \(degree)")
         dataRequestByAngle(param: String(degree), turnAngleTo : "turnAngleTo")
@@ -147,7 +147,9 @@ class FirstViewController: UIViewController {
         }
         if self.stepList.count > 0 {
             let setDeg = self.stepList[0].level * 40
+            print("auto setup \(setDeg)")
             self.rotation = CGFloat(setDeg)
+            self.levelIndicatorLabel.text = "LEVEL: \(self.stepList[0].level)"
             deg = rotate()
         }
         self.progress = self.progressList.first!
