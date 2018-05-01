@@ -29,6 +29,7 @@ class FirstViewController: UIViewController {
     var stepNumber = 0;
     var stepList = [RecipeItem.StepItem]();
     var timer: Timer? = nil
+    let progress_bar_count = 2
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
@@ -104,7 +105,6 @@ class FirstViewController: UIViewController {
     }
     
     
-    
     func drawProgress(){
         for index in 0..<self.progressList.count{
             self.progressList[index]?.removeFromSuperview()
@@ -113,13 +113,13 @@ class FirstViewController: UIViewController {
 
         self.progressList.removeAll()
         self.textViewList.removeAll()
-        for index in 0..<self.stepList.count{
+        for index in 0..<self.stepList.count {
             let pp = UIProgressView(progressViewStyle: .default)
             let thisFrame = CGRect(x: 40, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)
             let thisFrame2 = CGRect(x: 40, y: 100 + index * 100 - 10, width: Int(self.view.frame.width - 100), height: 20)
             pp.frame = thisFrame
             pp.tintColor = UIColor.gray
-            pp.trackTintColor = UIColor.black
+            pp.trackTintColor = UIColor.lightGray
             pp.transform = CGAffineTransform(scaleX: 1, y: 20)
             pp.setProgress(0.0, animated: true)
             pp.layer.borderColor = UIColor.gray.cgColor
@@ -153,16 +153,12 @@ class FirstViewController: UIViewController {
             }
             drawProgress()
         }
-        
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     
     func dataRequestByAngle(param: String, turnAngleTo : String) {
         
