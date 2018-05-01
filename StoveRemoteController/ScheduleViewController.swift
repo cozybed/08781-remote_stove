@@ -65,7 +65,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
             self.present(alert, animated: true, completion: nil)
         }
         
-        if (self.datePicker.date <  Date()){
+        if (self.datePicker.date.timeIntervalSince1970 <  Date().timeIntervalSince1970-60){
             let alert = UIAlertController(title: "Alert", message: "Time must be after current date.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

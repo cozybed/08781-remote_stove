@@ -33,6 +33,9 @@ class FirstViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         self.last_position = touch.location(in: self.view)
+        if (timer?.isValid)! {
+            timer?.invalidate()
+        }
         
     }
     
@@ -146,13 +149,16 @@ class FirstViewController: UIViewController {
             }
         }
         if self.stepList.count > 0 {
-            let setDeg = self.stepList[0].level * 40
+            let setDeg = Float(self.stepList[0].level) * 40 / 360 * (Float.pi * 2)
             print("auto setup \(setDeg)")
             self.rotation = CGFloat(setDeg)
             self.levelIndicatorLabel.text = "LEVEL: \(self.stepList[0].level)"
             deg = rotate()
         }
-        self.progress = self.progressList.first!
+        if self.stepList.count > 0 {
+            self.progress = self.progressList.first!
+        }
+        
         
     }
     
@@ -163,8 +169,11 @@ class FirstViewController: UIViewController {
             self.stepList.removeFirst()
             if self.stepList.count == 0 {
                 timer!.invalidate()
-                return
+                self.rotation = 0
+                deg = rotate()
+                self.levelIndicatorLabel.text = "LEVEL: 0"
             }
+            
             drawProgress()
         }
     }
