@@ -158,7 +158,7 @@ class FirstViewController: UIViewController {
             self.view.addSubview(textView)
             self.progressList.append(pp)
             self.textViewList.append(textView)
-            if index == 2{
+            if index == 1{
                 break;
             }
         }
