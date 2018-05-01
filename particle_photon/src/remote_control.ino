@@ -41,6 +41,7 @@ void loop()
 
 int turnAngleTo(String command)
 {
+    debug = command;
     int toAngle = command.toInt();
     int diff = toAngle - currentAngle;
     int pulseNum;
@@ -116,7 +117,6 @@ int dirToggle(String command)
 
 int newSchedule(String command)
 {
-    debug = command;
     int spacePosition = command.indexOf(' ');
     if (spacePosition > -1)
     {
