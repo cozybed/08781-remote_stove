@@ -23,11 +23,19 @@ class RecipeDetialViewController: UIViewController {
         let cur_recipe = recipe_arr[myIndex]
         DataManager.delete(cur_recipe.id.uuidString)
     }
-    
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        view.addGestureRecognizer(swipeUp)
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        view.addGestureRecognizer(swipeDown)
         
         let cur_recipe = recipe_arr[myIndex]
         recipeTitleLabel.text = cur_recipe.name
@@ -44,7 +52,7 @@ class RecipeDetialViewController: UIViewController {
             descLabel.text = cur_recipe.description
         }
     }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

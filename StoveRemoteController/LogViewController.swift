@@ -42,7 +42,7 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         globalStepList = globalRecipe[sender_index]
         startSchedule = true
         
-        var current_time = Int(Date().timeIntervalSince1970) + 3
+        var current_time = Int(Date().timeIntervalSince1970) + 2
     
         for step in globalStepList{
             let params = "\(current_time) \(step.level * 40)"

@@ -58,7 +58,13 @@ class RecipeEditViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        view.addGestureRecognizer(swipeUp)
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        view.addGestureRecognizer(swipeDown)
+        
         // Do any additional setup after loading the view.
         print ("In recipe edit view. current index is: ")
         print (myIndex)
@@ -149,6 +155,7 @@ class RecipeEditViewController: UIViewController, UIPickerViewDelegate, UIPicker
         selected = pickerData[row]
         return selected
     }
+    
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
     }
