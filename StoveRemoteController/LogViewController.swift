@@ -9,17 +9,16 @@
 import UIKit
 var globalRecipe = [[RecipeItem.StepItem]]()
 var globalStartDate = [Date]()
-var scheduleTimer = [Timer]()
 class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     var myTableView: UITableView = UITableView()
-    
+    var scheduleTimer = [Timer]()
     override func viewWillAppear(_ animated: Bool) {
         self.myTableView.reloadData()
-        for aTimer in scheduleTimer {
+        for aTimer in self.scheduleTimer {
             aTimer.invalidate()
         }
-        scheduleTimer.removeAll()
+        self.scheduleTimer.removeAll()
         for index in 0..<globalRecipe.count {
             
             let aDate = globalStartDate[index].timeIntervalSinceReferenceDate
@@ -32,7 +31,7 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             //todo: check for start time
             
             let aTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector:#selector(startAnSchedule(sender:)), userInfo: steps, repeats:false)
-            scheduleTimer.append(aTimer)
+            self.scheduleTimer.append(aTimer)
         }
     }
     
@@ -60,12 +59,12 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         //create table view
         let fullScreenSize = UIScreen.main.bounds.size
         self.myTableView = UITableView(frame: CGRect(
-            x: 0, y: 20,
+            x: 0, y: 60,
             width: fullScreenSize.width,
             height: fullScreenSize.height - 20),
                                       style: .grouped)
 
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LogViewController.refreshTable), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(LogViewController.refreshTable), userInfo: nil, repeats: true)
         
         
         // cited from https://itisjoe.gitbooks.io/swiftgo/content/uikit/uitableview.html
@@ -83,7 +82,7 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         // 分隔線的間距 四個數值分別代表 上、左、下、右 的間距
         myTableView.separatorInset =
             UIEdgeInsetsMake(0, 20, 0, 20)
-        
+        self.myTableView.backgroundColor = UIColor.clear
         // 是否可以點選 cell
         myTableView.allowsSelection = true
         
@@ -128,6 +127,8 @@ class LogViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             globalRecipe.remove(at: indexPath.section)
+            globalStartDate.remove(at: indexPath.section)
+            self.scheduleTimer.remove(at: indexPath.section)
             tableView.beginUpdates()
             tableView.deleteSections([indexPath.section], with: .middle)
             tableView.endUpdates()

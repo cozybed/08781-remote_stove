@@ -54,6 +54,9 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
     @IBAction func cancelSchedule(_ sender: Any) {
         popDown2()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.myTableView.reloadData()
+    }
     @IBAction func goStartSchedule(_ sender: Any) {
 //        globalStepList = self.stepList
 //        startSchedule = true
