@@ -33,9 +33,10 @@ class FirstViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         self.last_position = touch.location(in: self.view)
-        if (timer?.isValid)! {
+        if let _ = timer {
             timer?.invalidate()
         }
+        
         
     }
     
@@ -78,6 +79,14 @@ class FirstViewController: UIViewController {
         self.rotation += (rad2 - rad1)
         self.last_position = location
         deg = rotate()
+        var degree = Int(deg) % 360
+        if degree < 0 {
+            degree += 360
+        }
+        
+        let level = (degree + 20) / 40
+        
+        levelIndicatorLabel.text = "LEVEL: \(level)"
     }
  
     
@@ -87,7 +96,11 @@ class FirstViewController: UIViewController {
         if degree < 0 {
             degree += 360
         }
-        let level = degree / 40 + 1
+        let level = (degree + 20) / 40
+        
+        let addjust_rotation = Float(level) * 40 / 360 * (Float.pi * 2)
+        self.rotation = CGFloat(addjust_rotation)
+        deg = rotate()
         levelIndicatorLabel.text = "LEVEL: \(level)"
         print("rotate to \(degree)")
         dataRequestByAngle(param: String(degree), turnAngleTo : "turnAngleTo")
