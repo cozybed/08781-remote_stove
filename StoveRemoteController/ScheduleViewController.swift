@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var globalScheduleStepList = [RecipeItem.StepItem]()
 class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate,UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var levelField: UIPickerView!
@@ -55,6 +55,10 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         popDown2()
     }
     override func viewWillAppear(_ animated: Bool) {
+        if globalScheduleStepList.count != 0 {
+            self.stepList = globalScheduleStepList
+            globalScheduleStepList.removeAll()
+        }
         self.myTableView.reloadData()
     }
     @IBAction func goStartSchedule(_ sender: Any) {

@@ -24,6 +24,13 @@ class RecipeDetialViewController: UIViewController {
         DataManager.delete(cur_recipe.id.uuidString)
     }
     
+    @IBAction func startClicked(_ sender: Any) {
+    
+        globalScheduleStepList = recipe_arr[myIndex].steps
+    
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
