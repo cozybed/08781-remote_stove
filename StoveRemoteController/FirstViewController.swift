@@ -115,8 +115,8 @@ class FirstViewController: UIViewController {
         self.textViewList.removeAll()
         for index in 0..<self.stepList.count {
             let pp = UIProgressView(progressViewStyle: .default)
-            let thisFrame = CGRect(x: 40, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)
-            let thisFrame2 = CGRect(x: 40, y: 100 + index * 100 - 10, width: Int(self.view.frame.width - 100), height: 20)
+            let thisFrame = CGRect(x: 50, y: 100 + index * 100, width: Int(self.view.frame.width - 100), height: 20)
+            let thisFrame2 = CGRect(x: 50, y: 100 + index * 100 - 10, width: Int(self.view.frame.width - 100), height: 20)
             pp.frame = thisFrame
             pp.tintColor = UIColor.gray
             pp.trackTintColor = UIColor.lightGray
