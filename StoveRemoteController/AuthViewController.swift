@@ -19,6 +19,8 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        authenticationWithTouchID()
+
         // Do any additional setup after loading the view.
     }
     
