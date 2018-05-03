@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="upj-Ac-jyK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -52,7 +52,11 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Stove Status" id="qsk-k2-gwv">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Tr2-fU-6FU"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="menu" id="Tr2-fU-6FU">
+                            <connections>
+                                <segue destination="0WP-gF-ce3" kind="show" id="bes-Vi-QiW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="levelIndicatorLabel" destination="4N1-du-7nn" id="eLo-vF-zjf"/>
@@ -62,6 +66,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1881.1594202898552" y="-321.19565217391306"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="Zyu-p2-feJ">
+            <objects>
+                <viewController id="0WP-gF-ce3" customClass="AboutViewController" customModule="StoveGuard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6x4-7Y-fbQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mzG-sM-l9e">
+                                <rect key="frame" x="0.0" y="180" width="414" height="337"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kkq-TZ-nOo">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kkq-TZ-nOo" id="RT5-ZU-FFs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="v1v-w5-qcL" kind="show" identifier="aboutSegue" id="wq2-sf-cQ4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stove Guard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-bS-Eit">
+                                <rect key="frame" x="18" y="98" width="203" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fno-Gf-dg3"/>
+                    </view>
+                    <connections>
+                        <outlet property="aboutTableView" destination="mzG-sM-l9e" id="svf-2J-dCU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3s-lO-BCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2692.753623188406" y="-1083.4239130434783"/>
+        </scene>
+        <!--About Detail View Controller-->
+        <scene sceneID="107-d8-jLA">
+            <objects>
+                <viewController id="v1v-w5-qcL" customClass="AboutDetailViewController" customModule="StoveGuard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CVw-VM-vRN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="AHC-VC-4UL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u0P-6z-t5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3812" y="-1133"/>
         </scene>
         <!--Cam View Controller-->
         <scene sceneID="yD4-Qq-5dj">
@@ -769,13 +832,14 @@
     <resources>
         <image name="AppIconFront" width="722" height="700"/>
         <image name="Picture1" width="427" height="428"/>
+        <image name="menu" width="16" height="16"/>
         <image name="recipe-book" width="32" height="32"/>
         <image name="schedule" width="32" height="32"/>
         <image name="stove" width="35" height="35"/>
         <image name="task" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uXf-YC-Cew"/>
+        <segue reference="wlo-Yf-u2L"/>
         <segue reference="d2J-rR-cLd"/>
         <segue reference="hke-Lw-DZ1"/>
     </inferredMetricsTieBreakers>

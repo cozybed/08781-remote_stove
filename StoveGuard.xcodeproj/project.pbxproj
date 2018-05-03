@@ -21,6 +21,8 @@
 		90BB2F8E20701C0700CD3239 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */; };
 		90BB2F922070257300CD3239 /* RecipeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F912070257300CD3239 /* RecipeItem.swift */; };
 		90BB2F942070560B00CD3239 /* RecipeDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */; };
+		90D28E4B209B81AA0076B8B0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D28E4A209B81AA0076B8B0 /* AboutViewController.swift */; };
+		90D28E4D209B83280076B8B0 /* AboutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D28E4C209B83280076B8B0 /* AboutDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		90BB2F8D20701C0700CD3239 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		90BB2F912070257300CD3239 /* RecipeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItem.swift; sourceTree = "<group>"; };
 		90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetialViewController.swift; sourceTree = "<group>"; };
+		90D28E4A209B81AA0076B8B0 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = ../AboutViewController.swift; sourceTree = "<group>"; };
+		90D28E4C209B83280076B8B0 /* AboutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 		90707C522047B3C30009E4A7 /* StoveRemoteController */ = {
 			isa = PBXGroup;
 			children = (
+				90D28E4A209B81AA0076B8B0 /* AboutViewController.swift */,
 				662A69A820706B4900F70C96 /* JsonManager.swift */,
 				90707C532047B3C30009E4A7 /* AppDelegate.swift */,
 				90707C552047B3C30009E4A7 /* FirstViewController.swift */,
@@ -81,6 +86,7 @@
 				90BB2F932070560B00CD3239 /* RecipeDetialViewController.swift */,
 				901077B92073879D00100A3C /* RecipeEditViewController.swift */,
 				90707C592047B3C30009E4A7 /* Main.storyboard */,
+				90D28E4C209B83280076B8B0 /* AboutDetailViewController.swift */,
 				9065262220955E63003E89F8 /* AuthViewController.swift */,
 				90055490208692A300914852 /* CamViewController.swift */,
 				90707C5C2047B3C30009E4A7 /* Assets.xcassets */,
@@ -168,7 +174,9 @@
 				90707C582047B3C30009E4A7 /* LogViewController.swift in Sources */,
 				662A69A920706B4900F70C96 /* JsonManager.swift in Sources */,
 				90707C542047B3C30009E4A7 /* AppDelegate.swift in Sources */,
+				90D28E4D209B83280076B8B0 /* AboutDetailViewController.swift in Sources */,
 				90BB2F922070257300CD3239 /* RecipeItem.swift in Sources */,
+				90D28E4B209B81AA0076B8B0 /* AboutViewController.swift in Sources */,
 				901077BA2073879D00100A3C /* RecipeEditViewController.swift in Sources */,
 				90707C562047B3C30009E4A7 /* FirstViewController.swift in Sources */,
 				90BB2F8C20701AB800CD3239 /* ScheduleViewController.swift in Sources */,
