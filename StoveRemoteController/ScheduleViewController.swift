@@ -132,7 +132,7 @@ class ScheduleViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         self.blurView.isUserInteractionEnabled = false
         self.blurView.effect = nil
         self.popUpView.layer.cornerRadius = 15
-        
+        self.startScheduleView.layer.cornerRadius = 15
         let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         view.addGestureRecognizer(swipeUp)
